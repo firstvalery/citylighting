@@ -11,10 +11,21 @@ import javax.ws.rs.core.Response;
 import ru.smartsarov.citylighting.SprutExchange;
 import static ru.smartsarov.citylighting.CityLightingConstants.*;
 
+import java.io.InputStream;
+
 @Path("/")
 @Produces(MediaType.APPLICATION_JSON)
 public class CityLighting
 {
+	@GET
+	@Path("/")
+	@Produces(MediaType.TEXT_HTML + ";charset=UTF-8")
+    public Response index()
+    {
+		InputStream is = this.getClass().getResourceAsStream("/static/index.html");
+    	return Response.status(Response.Status.OK).entity(is).build();
+    }
+
 	@GET
 	@Path("/sprut/on_evening")
     public Response sprutOnEvening(

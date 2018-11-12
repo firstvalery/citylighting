@@ -113,8 +113,8 @@ public class SprutExchange {
 	         
 
 	          Result<Record8<Integer,Integer,String,String,String,String,Timestamp,String>> result  = create
-	             .select(USK.USK_ID, USK.USK_UID, USK.USK_IP, HOME.HOME_NUMBER, STREET.STRT_NAME, 
-	        		  		STREET_TYPE.STREETT_SNAME, GPRS_CURR.GPRS_CTIME, GUARD_PIN_NETSOST.GRDPN_NAME)
+	             .select(USK.USK_ID.as("device_id"), USK.USK_UID.as("device_uid"), USK.USK_IP.as("device_ip"), HOME.HOME_NUMBER.as("building_num"), STREET.STRT_NAME.as("street_name"), 
+	        		  		STREET_TYPE.STREETT_SNAME.as("street_type"), GPRS_CURR.GPRS_CTIME.as("gprs_last_timestamp"), GUARD_PIN_NETSOST.GRDPN_NAME.as("link_state"))
 	        		  .from(USK)
 	        		  	.leftJoin(ADRESS).on(ADRESS.ADR_ID.eq(USK.USK_ADR_ID))
 	        		  		.leftJoin(HOME).on(HOME.HOME_ID.eq(ADRESS.ADR_HOME_ID))
