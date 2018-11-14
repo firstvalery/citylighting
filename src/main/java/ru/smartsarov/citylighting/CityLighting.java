@@ -84,4 +84,16 @@ public class CityLighting
 			return Response.status(Response.Status.OK).entity(e.toString()).build(); 
 		}
     }
+	
+	@GET
+	@Path("/sprut/electric_state")
+    public Response sprutShowElectrParams(
+    		@QueryParam("device_id") int device_id)
+    {	
+		try {
+			return Response.status(Response.Status.OK).entity(SprutExchange.showElectricParams(device_id)).build(); 
+		} catch (Exception e) {
+			return Response.status(Response.Status.OK).entity(e.toString()).build(); 
+		}
+    }
 }

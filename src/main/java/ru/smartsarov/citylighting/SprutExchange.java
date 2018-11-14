@@ -10,6 +10,8 @@ import static ru.smartsarov.citylighting.sprut.tables.Street.*;
 import static ru.smartsarov.citylighting.sprut.tables.StreetType.*;
 import static ru.smartsarov.citylighting.sprut.tables.GprsCurr.*;
 import static ru.smartsarov.citylighting.sprut.tables.GuardPinNetsost.*;
+import static ru.smartsarov.citylighting.sprut.tables.Cnt.*;
+import static ru.smartsarov.citylighting.sprut.tables.CntMrccurrvalue.*;
 
 import java.sql.*;
 import java.util.HashMap;
@@ -130,6 +132,46 @@ public class SprutExchange {
 	         return result.formatJSON(new JSONFormat().header(false).recordFormat(RecordFormat.OBJECT));
 		}
 	}
+	
+	
+	/**
+	 * Shows electrical parameters for the device
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
+	 */
+	public static String showElectricParams(int device_id) throws ClassNotFoundException, SQLException{
+	try (Connection conn = getConnection()) {
+        DSLContext create = DSL.using(conn, SQLDialect.FIREBIRD_2_5);
+        
+
+         Result<Record17<Integer,Integer,String,Double,Double,Double,Double,Double,Double,Double,Double,Double,Double,Double,Double,Double,Timestamp>> result  = create
+            .select(CNT.CNT_UNK_ID.as("device_id"),
+            		CNT.CNT_ID.as("cntr_id"),
+            		CNT.CNT_NAME.as("cntr_nm"), 
+            		CNT_MRCCURRVALUE.CNTMCV_AP.as("act_nrgy"), 
+            		CNT_MRCCURRVALUE.CNTMCV_RP.as("react_nrgy"),
+            		CNT_MRCCURRVALUE.CNTMCV_P.as("pwr"), 
+            		CNT_MRCCURRVALUE.CNTMCV_PA.as("pwr_a"),
+            		CNT_MRCCURRVALUE.CNTMCV_PB.as("pwr_b"),
+            		CNT_MRCCURRVALUE.CNTMCV_PC.as("pwr_c"), 
+            		CNT_MRCCURRVALUE.CNTMCV_VA.as("vltg_a"),
+            		CNT_MRCCURRVALUE.CNTMCV_VB.as("vltg_b"),
+            		CNT_MRCCURRVALUE.CNTMCV_VC.as("vltg_c"), 
+            		CNT_MRCCURRVALUE.CNTMCV_IA.as("crr_a"),
+            		CNT_MRCCURRVALUE.CNTMCV_IB.as("crr_b"),
+            		CNT_MRCCURRVALUE.CNTMCV_IC.as("crr_c"), 
+            		CNT_MRCCURRVALUE.CNTMCV_COS_FI.as("cos_ph"), 
+            		CNT_MRCCURRVALUE.CNTMCV_DATE.as("cnt_tm")) 
+            			.from(CNT)
+            				.leftJoin(CNT_MRCCURRVALUE).on(CNT_MRCCURRVALUE.CNTMCV_CID.eq(CNT.CNT_ID))
+            					.where(CNT.CNT_UNK_ID.eq(device_id))
+       		  						.fetch();
+         
+        
+        return result.formatJSON(new JSONFormat().header(false).recordFormat(RecordFormat.OBJECT));
+	}
+}
+	
 
 	/**
 	 * Shows device state.
