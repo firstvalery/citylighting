@@ -10,9 +10,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<!--name>template</name>
-	<description>Template servlet</description>
-	<url>http://sarov.us.to:9900/template</url-->
+	<!--name></name>
+	<description> </description>
+	<url>http://sarov.us.to:9900/</url-->
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -109,6 +109,12 @@
 		    <artifactId>jaybird-jdk18</artifactId>
 		    <version>3.0.5</version>
 		</dependency>
+		<dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
 		
 	</dependencies>
 

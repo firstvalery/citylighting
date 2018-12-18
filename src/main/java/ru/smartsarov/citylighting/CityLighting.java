@@ -79,7 +79,7 @@ public class CityLighting
     		@QueryParam("device_id") int device_id)
     {	
 		try {
-			return Response.status(Response.Status.OK).entity(SprutExchange.showStateById(device_id)).build(); 
+			return Response.status(Response.Status.OK).entity(SprutExchange.showState()).build(); 
 		} catch (Exception e) {
 			return Response.status(Response.Status.OK).entity(e.toString()).build(); 
 		}
@@ -92,6 +92,17 @@ public class CityLighting
     {	
 		try {
 			return Response.status(Response.Status.OK).entity(SprutExchange.showElectricParams(device_id)).build(); 
+		} catch (Exception e) {
+			return Response.status(Response.Status.OK).entity(e.toString()).build(); 
+		}
+    }
+	
+	@GET
+	@Path("/sprut/lamp")
+    public Response sprutShowSwitchedOffLamps()
+    {	
+		try {
+			return Response.status(Response.Status.OK).entity(SprutExchange.getCountSwOffLamps()).build(); 
 		} catch (Exception e) {
 			return Response.status(Response.Status.OK).entity(e.toString()).build(); 
 		}

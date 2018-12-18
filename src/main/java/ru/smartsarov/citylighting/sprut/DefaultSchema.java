@@ -234,6 +234,7 @@ import ru.smartsarov.citylighting.sprut.tables.UnoStates;
 import ru.smartsarov.citylighting.sprut.tables.UpdXgroup;
 import ru.smartsarov.citylighting.sprut.tables.Usk;
 import ru.smartsarov.citylighting.sprut.tables.UskChange;
+import ru.smartsarov.citylighting.sprut.tables.UskCoor;
 import ru.smartsarov.citylighting.sprut.tables.UskCurr;
 import ru.smartsarov.citylighting.sprut.tables.UskExtChange;
 import ru.smartsarov.citylighting.sprut.tables.UskExtModule;
@@ -292,7 +293,7 @@ import ru.smartsarov.citylighting.sprut.tables.records.UpdXgroupRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class DefaultSchema extends SchemaImpl {
 
-    private static final long serialVersionUID = -1518394141;
+    private static final long serialVersionUID = -1253177727;
 
     /**
      * The reference instance of <code></code>
@@ -1782,6 +1783,11 @@ public class DefaultSchema extends SchemaImpl {
     public final UskChange USK_CHANGE = ru.smartsarov.citylighting.sprut.tables.UskChange.USK_CHANGE;
 
     /**
+     * The table <code>USK_COOR</code>.
+     */
+    public final UskCoor USK_COOR = ru.smartsarov.citylighting.sprut.tables.UskCoor.USK_COOR;
+
+    /**
      * The table <code>USK_CURR</code>.
      */
     public final UskCurr USK_CURR = ru.smartsarov.citylighting.sprut.tables.UskCurr.USK_CURR;
@@ -1935,6 +1941,9 @@ public class DefaultSchema extends SchemaImpl {
             Sequences.ELEMENT_NOTIFICATION_ID,
             Sequences.EXMDL_ID,
             Sequences.FLT_ID,
+            Sequences.GEN_USK_COORDINATES_ID,
+            Sequences.GEN_USK_COORDINATES_ID1,
+            Sequences.GEN_USK_COORDINATES_ID2,
             Sequences.GPIN_ID,
             Sequences.GPLG_ID,
             Sequences.GPM_ID,
@@ -2238,6 +2247,7 @@ public class DefaultSchema extends SchemaImpl {
             UsklSync.USKL_SYNC,
             UsklSysEventType.USKL_SYS_EVENT_TYPE,
             UskChange.USK_CHANGE,
+            UskCoor.USK_COOR,
             UskCurr.USK_CURR,
             UskExtChange.USK_EXT_CHANGE,
             UskExtModule.USK_EXT_MODULE,

@@ -227,6 +227,7 @@ import ru.smartsarov.citylighting.sprut.tables.UnoStates;
 import ru.smartsarov.citylighting.sprut.tables.UpdXgroup;
 import ru.smartsarov.citylighting.sprut.tables.Usk;
 import ru.smartsarov.citylighting.sprut.tables.UskChange;
+import ru.smartsarov.citylighting.sprut.tables.UskCoor;
 import ru.smartsarov.citylighting.sprut.tables.UskCurr;
 import ru.smartsarov.citylighting.sprut.tables.UskExtChange;
 import ru.smartsarov.citylighting.sprut.tables.UskExtModule;
@@ -1766,6 +1767,11 @@ public class Tables {
      * The table <code>USK_CHANGE</code>.
      */
     public static final UskChange USK_CHANGE = ru.smartsarov.citylighting.sprut.tables.UskChange.USK_CHANGE;
+
+    /**
+     * The table <code>USK_COOR</code>.
+     */
+    public static final UskCoor USK_COOR = ru.smartsarov.citylighting.sprut.tables.UskCoor.USK_COOR;
 
     /**
      * The table <code>USK_CURR</code>.

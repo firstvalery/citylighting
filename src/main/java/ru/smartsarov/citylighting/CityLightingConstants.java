@@ -15,4 +15,6 @@ public class CityLightingConstants {
 	 * Turn off all constant
 	 */
 	static final int CMD_OFF = 3;
+		
+	
 }
