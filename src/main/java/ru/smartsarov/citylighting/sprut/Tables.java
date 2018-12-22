@@ -27,6 +27,8 @@ import ru.smartsarov.citylighting.sprut.tables.CheckIp;
 import ru.smartsarov.citylighting.sprut.tables.City;
 import ru.smartsarov.citylighting.sprut.tables.CityType;
 import ru.smartsarov.citylighting.sprut.tables.Cnt;
+import ru.smartsarov.citylighting.sprut.tables.CntAlarm;
+import ru.smartsarov.citylighting.sprut.tables.CntAlarmPar;
 import ru.smartsarov.citylighting.sprut.tables.CntChange;
 import ru.smartsarov.citylighting.sprut.tables.CntChannel;
 import ru.smartsarov.citylighting.sprut.tables.CntChannelType;
@@ -396,6 +398,16 @@ public class Tables {
      * The table <code>CNTV</code>.
      */
     public static final Cntv CNTV = ru.smartsarov.citylighting.sprut.tables.Cntv.CNTV;
+
+    /**
+     * The table <code>CNT_ALARM</code>.
+     */
+    public static final CntAlarm CNT_ALARM = ru.smartsarov.citylighting.sprut.tables.CntAlarm.CNT_ALARM;
+
+    /**
+     * The table <code>CNT_ALARM_PAR</code>.
+     */
+    public static final CntAlarmPar CNT_ALARM_PAR = ru.smartsarov.citylighting.sprut.tables.CntAlarmPar.CNT_ALARM_PAR;
 
     /**
      * The table <code>CNT_CHANGE</code>.

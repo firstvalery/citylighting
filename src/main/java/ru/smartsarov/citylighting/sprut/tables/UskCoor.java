@@ -4,6 +4,7 @@
 package ru.smartsarov.citylighting.sprut.tables;
 
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
@@ -38,7 +39,7 @@ import ru.smartsarov.citylighting.sprut.tables.records.UskCoorRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class UskCoor extends TableImpl<UskCoorRecord> {
 
-    private static final long serialVersionUID = -1085556678;
+    private static final long serialVersionUID = 953873662;
 
     /**
      * The reference instance of <code>USK_COOR</code>
@@ -54,9 +55,9 @@ public class UskCoor extends TableImpl<UskCoorRecord> {
     }
 
     /**
-     * The column <code>USK_COOR.SYS_ID</code>.
+     * The column <code>USK_COOR.ID</code>.
      */
-    public final TableField<UskCoorRecord, Integer> SYS_ID = createField("SYS_ID", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
+    public final TableField<UskCoorRecord, Integer> ID = createField("ID", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
 
     /**
      * The column <code>USK_COOR.USK_ID</code>.
@@ -64,24 +65,29 @@ public class UskCoor extends TableImpl<UskCoorRecord> {
     public final TableField<UskCoorRecord, Integer> USK_ID = createField("USK_ID", org.jooq.impl.SQLDataType.INTEGER, this, "");
 
     /**
-     * The column <code>USK_COOR.INDEX</code>.
+     * The column <code>USK_COOR.FIGURE_ID</code>.
      */
-    public final TableField<UskCoorRecord, Integer> INDEX = createField("INDEX", org.jooq.impl.SQLDataType.INTEGER, this, "");
+    public final TableField<UskCoorRecord, Integer> FIGURE_ID = createField("FIGURE_ID", org.jooq.impl.SQLDataType.INTEGER, this, "");
 
     /**
-     * The column <code>USK_COOR.LONGITUDE</code>.
+     * The column <code>USK_COOR.INDEX_ID</code>.
      */
-    public final TableField<UskCoorRecord, Float> LONGITUDE = createField("LONGITUDE", org.jooq.impl.SQLDataType.REAL, this, "");
+    public final TableField<UskCoorRecord, Integer> INDEX_ID = createField("INDEX_ID", org.jooq.impl.SQLDataType.INTEGER, this, "");
 
     /**
-     * The column <code>USK_COOR.LATITUDE</code>.
+     * The column <code>USK_COOR.LON</code>.
      */
-    public final TableField<UskCoorRecord, Float> LATITUDE = createField("LATITUDE", org.jooq.impl.SQLDataType.REAL, this, "");
+    public final TableField<UskCoorRecord, BigDecimal> LON = createField("LON", org.jooq.impl.SQLDataType.DECIMAL(13, 10), this, "");
+
+    /**
+     * The column <code>USK_COOR.LAT</code>.
+     */
+    public final TableField<UskCoorRecord, BigDecimal> LAT = createField("LAT", org.jooq.impl.SQLDataType.DECIMAL(13, 10), this, "");
 
     /**
      * The column <code>USK_COOR.REMOVED</code>.
      */
-    public final TableField<UskCoorRecord, Integer> REMOVED = createField("REMOVED", org.jooq.impl.SQLDataType.INTEGER, this, "");
+    public final TableField<UskCoorRecord, Integer> REMOVED = createField("REMOVED", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
 
     /**
      * Create a <code>USK_COOR</code> table reference

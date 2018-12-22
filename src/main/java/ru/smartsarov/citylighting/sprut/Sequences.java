@@ -194,19 +194,9 @@ public class Sequences {
     public static final Sequence<Long> FLT_ID = new SequenceImpl<Long>("FLT_ID", DefaultSchema.DEFAULT_SCHEMA, org.jooq.impl.SQLDataType.BIGINT);
 
     /**
-     * The sequence <code>GEN_USK_COORDINATES_ID</code>
+     * The sequence <code>GEN_USK_COOR_ID</code>
      */
-    public static final Sequence<Long> GEN_USK_COORDINATES_ID = new SequenceImpl<Long>("GEN_USK_COORDINATES_ID", DefaultSchema.DEFAULT_SCHEMA, org.jooq.impl.SQLDataType.BIGINT);
-
-    /**
-     * The sequence <code>GEN_USK_COORDINATES_ID1</code>
-     */
-    public static final Sequence<Long> GEN_USK_COORDINATES_ID1 = new SequenceImpl<Long>("GEN_USK_COORDINATES_ID1", DefaultSchema.DEFAULT_SCHEMA, org.jooq.impl.SQLDataType.BIGINT);
-
-    /**
-     * The sequence <code>GEN_USK_COORDINATES_ID2</code>
-     */
-    public static final Sequence<Long> GEN_USK_COORDINATES_ID2 = new SequenceImpl<Long>("GEN_USK_COORDINATES_ID2", DefaultSchema.DEFAULT_SCHEMA, org.jooq.impl.SQLDataType.BIGINT);
+    public static final Sequence<Long> GEN_USK_COOR_ID = new SequenceImpl<Long>("GEN_USK_COOR_ID", DefaultSchema.DEFAULT_SCHEMA, org.jooq.impl.SQLDataType.BIGINT);
 
     /**
      * The sequence <code>GPIN_ID</code>

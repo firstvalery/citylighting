@@ -107,4 +107,21 @@ public class CityLighting
 			return Response.status(Response.Status.OK).entity(e.toString()).build(); 
 		}
     }
+	
+	@GET
+	@Path("/sprut/block")
+    public Response sprutShowSwitchedOffLamps(
+    		@QueryParam("device_id") int device_id,
+    		@QueryParam("block_type") int block_type)
+    {	
+		try {
+			return Response.status(Response.Status.OK).entity(SprutExchange.blockControl(device_id, block_type)).build(); 
+		} catch (Exception e) {
+			return Response.status(Response.Status.OK).entity(e.toString()).build(); 
+		}
+    }
+	
+	
+	
+	
 }

@@ -16,16 +16,30 @@ import static ru.smartsarov.citylighting.sprut.tables.UskCoor.*;
 import static ru.smartsarov.citylighting.sprut.tables.LightLine.*;
 import static ru.smartsarov.citylighting.sprut.tables.Cntv.*;
 import static ru.smartsarov.citylighting.sprut.tables.CntLstate.*;
+import static ru.smartsarov.citylighting.sprut.tables.LightBlock.*;
 
+import java.math.BigDecimal;
 import java.sql.*;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
-import org.jooq.*;
+
+import org.jooq.DSLContext;
+import org.jooq.JSONFormat;
 import org.jooq.JSONFormat.RecordFormat;
-import org.jooq.impl.*;
+import org.jooq.Record1;
+import org.jooq.Record5;
+import org.jooq.Result;
+import org.jooq.SQLDialect;
+import org.jooq.impl.DSL;
 
 import com.google.gson.Gson;
+
+import ru.smartsarov.citylighting.sprut.tables.records.LightBlockRecord;
+
 
 
 
@@ -149,10 +163,7 @@ public class SprutExchange {
 	 */
 	public static String showElectricParams(int device_id) throws ClassNotFoundException, SQLException{
 	try (Connection conn = getConnection()) {
-        DSLContext dsl = DSL.using(conn, SQLDialect.FIREBIRD_2_5);
-        
-
-         Result<?> result  = dsl
+        return DSL.using(conn, SQLDialect.FIREBIRD_2_5)
             .select(CNT.CNT_UNK_ID.as("device_id"),
             		CNT.CNT_ID.as("cntr_id"),
             		CNT.CNT_NAME.as("cntr_nm"), 
@@ -173,76 +184,22 @@ public class SprutExchange {
             			.from(CNT)
             			.leftJoin(CNT_MRCCURRVALUE).on(CNT_MRCCURRVALUE.CNTMCV_CID.eq(CNT.CNT_ID))
             			.where(CNT.CNT_UNK_ID.eq(device_id))
-       		  			.fetch();
-         
-        
-        return result.formatJSON(new JSONFormat().header(false).recordFormat(RecordFormat.OBJECT));
+       		  			.fetch()
+       		  			.formatJSON(new JSONFormat().header(false).recordFormat(RecordFormat.OBJECT));
 	}
 }
-	
 
 	/**
-	 * Shows device state.
-	 * Returns json
-	 * @throws SQLException 
-	 * @throws ClassNotFoundException 
-	 */
-	@Deprecated
-	public static String showStateById(int device_id) throws ClassNotFoundException, SQLException  {
-		try (Connection conn = getConnection()) {
-	         DSLContext dsl = DSL.using(conn, SQLDialect.FIREBIRD_2_5);
-	         
-	         Result<?> records = dsl
-	        		 .select(GUARD_PIN.GPIN_ENTRY, GUARD_PIN_CURR.GPCR_DVALUE)
-					 .from(GUARD_PIN_CURR)	
-					 .join(GUARD_PIN).on(GUARD_PIN.GPIN_ID.eq(GUARD_PIN_CURR.GPCR_PIN_ID))
-					 .where(GUARD_PIN_CURR.GPCR_PIN_ID
-					 .between(dsl.select(GUARD_PIN.GPIN_ID)
-					 .from(GUARD_PIN)					 							  
-					 .where(GUARD_PIN.GPIN_ENTRY.eq(1))              
-					 .fetchAny()
-					 .value1())
-					 .and(dsl.select(GUARD_PIN.GPIN_ID)
-					 .from(GUARD_PIN)
-					 .where(GUARD_PIN.GPIN_ENTRY.eq(12))
-					 .fetchAny()
-					 .value1()))							
-					 .fetch();
-	         
-	         /*Gson gs = new Gson();
-	         Map<Integer, Integer> retMap = gs.fromJson(
-	        		 records.formatJSON(new JSONFormat().header(false).recordFormat(RecordFormat.ARRAY)),
-	        		 	new TypeToken<HashMap<Integer, Integer>>() {}.getType());  
-    																			
-	         UspdState u = new UspdState();
-	         if (!records.isEmpty()) {
-	        	 u.setDevice_id(device_id);
-	        	 u.setPh_a(retMap.get(1)==0);
-	        	 u.setPh_b(retMap.get(2)==0);
-	        	 u.setPh_c(retMap.get(3)==0);
-	        	 u.setRelay1(retMap.get(8)==0);
-	        	 u.setRelay2(retMap.get(12)==0);
-	         }
-	        
-	         return gs.toJson(u);*/
-	         return  records.formatJSON(new JSONFormat().header(false).recordFormat(RecordFormat.ARRAY));
-		}
-		catch(NullPointerException e) {
-			return "{}";
-		}
-	}
-	/**
-	 * Shows devices state.
+	 * Shows devices state. 
 	 * Returns json
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
 	 */
 	public static String showState() throws ClassNotFoundException, SQLException  {
-		try (Connection conn = getConnection()) {
-	         DSLContext dsl = DSL.using(conn, SQLDialect.FIREBIRD_2_5);
-	         
-	         Result<Record10<Integer,Integer,Integer,String,Integer,String,String,String,Timestamp,String>> records = dsl
-	        		 .select(GUARD_PIN.GPIN_UNK_ID,  
+		try (Connection conn = getConnection()) {     
+			List<UspdState> retList 
+			= DSL.using(conn, SQLDialect.FIREBIRD_2_5)
+					.select(GUARD_PIN.GPIN_UNK_ID,  
 	        				 GUARD_PIN.GPIN_ENTRY, 
 	        				 GUARD_PIN_CURR.GPCR_DVALUE, 
 	        				 USK.USK_IP, 
@@ -251,66 +208,106 @@ public class SprutExchange {
 	        				 STREET.STRT_NAME, 
 		        		  	 STREET_TYPE.STREETT_SNAME, 
 		        		  	 GPRS_CURR.GPRS_CTIME, 
-		        		  	 GUARD_PIN_NETSOST.GRDPN_NAME)
+		        		  	 GUARD_PIN_NETSOST.GRDPN_NAME,
+		        		  	LIGHT_BLOCK.BLOCK_STANDALONE,
+		        		  	LIGHT_BLOCK.BLOCK_ALL,
+		        		  	LIGHT_BLOCK.SYNCED)
 								 .from(GUARD_PIN_CURR)	
 								 .join(GUARD_PIN).on(GUARD_PIN.GPIN_ID.eq(GUARD_PIN_CURR.GPCR_PIN_ID))
-								 .leftJoin(USK).on(USK.USK_ID.eq(GUARD_PIN.GPIN_UNK_ID))
-								 .leftJoin(ADRESS).on(ADRESS.ADR_ID.eq(USK.USK_ADR_ID))
-				        		 .leftJoin(HOME).on(HOME.HOME_ID.eq(ADRESS.ADR_HOME_ID))
-				        		 .leftJoin(STREET).on(STREET.STRT_ID.eq(HOME.HOME_STRT_ID))
-				        		 .leftJoin(STREET_TYPE).on(STREET_TYPE.STREETT_ID.eq(STREET.STRT_TYPE))
-				        		 .leftJoin(GPRS_CURR).on(GPRS_CURR.GPRS_USK_ID.eq(GUARD_PIN.GPIN_UNK_ID))
-				        		 .leftJoin(GUARD_PIN_NETSOST).on(GUARD_PIN_NETSOST.GRDPN_ID.eq(GUARD_PIN_CURR.GPCR_STATE))
-								 .fetch();
-	         
-	        
-	         
-	         Map<Integer, UspdState> retMap = new HashMap<Integer, UspdState>();
-	         for (Record10<Integer,Integer,Integer,String,Integer,String,String,String,Timestamp,String> res:records) {
-	        	 if(retMap.containsKey(res.value1())) {
-	        		 retMap.get(res.value1()).addParamToUspdState(res.value2(), res.value3()==0);	        		
-	        	 }else {
-	        		UspdState us = new UspdState().addParamToUspdState(res.value2(), res.value3()==0);
-	        		us.setDevice_id(res.value1());
-	        		us.setIp_addr(res.value4());
-	        		us.setUid(res.value5());
-	        		us.setPhis_addr(res.value8()+" "+res.value7()+" "+res.value6());
-	        		us.setTs_last_telemetry(res.value9().getTime()/1000);
-	        		us.setLink_type(res.value10());
-		 
-	        		retMap.put(res.value1(), us);
-	        	 }
-	         }
-	         															
-	         return new Gson().toJson(retMap.values().toArray());
-		}
-		catch(NullPointerException e) {
-			return "{}";
+								 .join(USK).on(USK.USK_ID.eq(GUARD_PIN.GPIN_UNK_ID))
+								 .join(ADRESS).on(ADRESS.ADR_ID.eq(USK.USK_ADR_ID))
+				        		 .join(HOME).on(HOME.HOME_ID.eq(ADRESS.ADR_HOME_ID))
+				        		 .join(STREET).on(STREET.STRT_ID.eq(HOME.HOME_STRT_ID))
+				        		 .join(STREET_TYPE).on(STREET_TYPE.STREETT_ID.eq(STREET.STRT_TYPE))
+				        		 .join(GPRS_CURR).on(GPRS_CURR.GPRS_USK_ID.eq(GUARD_PIN.GPIN_UNK_ID))
+				        		 .join(GUARD_PIN_NETSOST).on(GUARD_PIN_NETSOST.GRDPN_ID.eq(GUARD_PIN_CURR.GPCR_STATE))
+				        		 .leftJoin(LIGHT_BLOCK).on(LIGHT_BLOCK.USK_ID.eq(USK.USK_ID))
+								 .fetch()
+								 .stream()
+								.collect(Collectors.groupingBy(j-> j.value1()))
+								.entrySet()
+								.stream()
+								.map(j->{
+										UspdState us = new UspdState();
+										
+										if (j.getValue().isEmpty()) {
+											return us;
+										}
+					
+										us.setDeviceId(j.getValue().get(0).get(GUARD_PIN.GPIN_UNK_ID));
+										us.setIp_addr(j.getValue().get(0).get(USK.USK_IP));
+										us.setUid(j.getValue().get(0).get(USK.USK_UID));
+										us.setPhis_addr(j.getValue().get(0).get(STREET_TYPE.STREETT_SNAME)+
+														" "+
+														j.getValue().get(0).get(STREET.STRT_NAME)+
+														" "+
+														j.getValue().get(0).get(HOME.HOME_NUMBER));
+										us.setTsLastTelemetry(j.getValue().get(0).get(GPRS_CURR.GPRS_CTIME).getTime()/1000);
+										us.setLinkType(j.getValue().get(0).get(GUARD_PIN_NETSOST.GRDPN_NAME));
+										
+										Map<Integer, Integer>pinMap = j.getValue().stream()
+										.collect(Collectors.toMap(k->k.value2(), k->k.value3(),(oldVal, newVal)->oldVal));
+									
+										//Relay 1 state = PIN8
+										us.setRelay1(pinMap.get(8)==0);
+										//Relay 2 state = PIN12 (See electrical schema )
+										us.setRelay2(pinMap.get(12)==0);
+										boolean block = j.getValue().get(0).get(LIGHT_BLOCK.BLOCK_STANDALONE)!=null?j.getValue().get(0).get(LIGHT_BLOCK.BLOCK_STANDALONE)!=0:false;
+										boolean synced = j.getValue().get(0).get(LIGHT_BLOCK.SYNCED)!=null?j.getValue().get(0).get(LIGHT_BLOCK.SYNCED)!=0:false;
+										us.setBlockStandalone(block && synced);
+										block = j.getValue().get(0).get(LIGHT_BLOCK.BLOCK_ALL)!=null?j.getValue().get(0).get(LIGHT_BLOCK.BLOCK_ALL)!=0:false;
+										us.setBlockAll(block && synced);
+									return us;
+								}).collect(Collectors.toList());		
+			
+			
+			Map<Integer, List<List<ClusterPoint>>> geoMap = DSL.using(conn, SQLDialect.FIREBIRD_2_5)
+			.select(USK_COOR.USK_ID,
+					USK_COOR.FIGURE_ID,
+					USK_COOR.INDEX_ID,
+					USK_COOR.LON,
+					USK_COOR.LAT)
+						.from(USK_COOR)
+						.where(USK_COOR.REMOVED.eq(0))
+						.fetch()			
+						.stream()
+						.collect(Collectors.groupingBy(j->j.value1()))
+						.entrySet()
+						.stream()			
+						.collect(Collectors.toMap(j->j.getKey(), j->{
+											 
+													return j.getValue()
+													.stream()
+													.collect(Collectors.groupingBy(k->k.value2()))
+													.entrySet()
+													.stream()
+													.map(i->{
+														
+														return i.getValue()
+																	.stream()
+																	.sorted(new Comparator<Record5<Integer, Integer, Integer, 
+																										BigDecimal, BigDecimal>>(){
+																		@Override
+																		public int compare(
+																				Record5<Integer, Integer, Integer, BigDecimal, BigDecimal> a,
+																				Record5<Integer, Integer, Integer, BigDecimal, BigDecimal> b) {
+																			// TODO Auto-generated method stub
+																			return a.value3().compareTo(b.value3());
+																		}		
+																	})
+																	.collect(
+																			()->new ArrayList<ClusterPoint>(),
+																			(list, item)->list.add(new ClusterPoint(item.value4(), item.value5())),
+																			(list1, list2)->list1.addAll(list2));
+													}).collect(Collectors.toList());
+												}));
+			for(UspdState us : retList) {
+				us.setGeoData(geoMap.get(us.getDeviceId()));
+			}
+	         return new Gson().toJson(retList);
 		}
 	}
 	
-	/**
-	 * Method for getting geo data of lighting cluster 
-	 * @throws SQLException 
-	 * @throws ClassNotFoundException 
-	 */
-
-	public static String showGeoData() throws ClassNotFoundException, SQLException {
-		 try (Connection conn = getConnection()) {
-	         DSLContext dsl = DSL.using(conn, SQLDialect.FIREBIRD_2_5);
-	         		Result<?> result =dsl.
-	         				select(USK_COOR.USK_ID,
-	         						USK_COOR.INDEX,
-	         						USK_COOR.LONGITUDE, 
-	         						USK_COOR.LATITUDE)
-	         						.from(USK_COOR)
-	         						.where(USK_COOR.REMOVED.eq(0))
-	         						.fetch();
-	        	     //TODO    
-	               
-	            return "{\"message\":\"The command was send\"}";
-	        } 
-	}
 	
 	/**
 	 * Method for count getting of switched off lamps 
@@ -319,44 +316,100 @@ public class SprutExchange {
 	 */
 
 	public static String getCountSwOffLamps() throws ClassNotFoundException, SQLException {
-		 try (Connection conn = getConnection()) {
-			 DSLContext dsl = DSL.using(conn, SQLDialect.FIREBIRD_2_5);
-			 	 Result<Record12<Integer,Integer,Integer,Integer,Integer,Integer,Integer,Double,Double,Double,Integer,String>> result = dsl
-			 			.select(CNT.CNT_UNK_ID.as("device_id"),
-			 					LIGHT_LINE.LAMP_NUM_A.as("a_bad_lamps"),
-			 					LIGHT_LINE.LAMP_NUM_B.as("b_bad_lamps"),
-			 					LIGHT_LINE.LAMP_NUM_C.as("c_bad_lamps"),
-			 					LIGHT_LINE.LAMP_W_A.as("a_pw_pl"),
-			 					LIGHT_LINE.LAMP_W_B.as("b_pw_pl"),		
-			 					LIGHT_LINE.LAMP_W_C.as("c_pw_pl"),
-			 					CNT_MRCCURRVALUE.CNTMCV_PA.as("a_pw"),
-			 					CNT_MRCCURRVALUE.CNTMCV_PB.as("b_pw"),
-			 					CNT_MRCCURRVALUE.CNTMCV_PC.as("c_pw"),
-			 					CNTV.CNTV_STATE.as("cnt_link_state_code"),
-			 					CNT_LSTATE.CNTLS_SNAME.as("cnt_link_state"))			 					
-			 					.from(CNT)
-			 					.leftJoin(LIGHT_LINE).on(LIGHT_LINE.LINE_CNT_ID.eq(CNT.CNT_ID))
-			 					.leftJoin(CNT_MRCCURRVALUE).on(CNT_MRCCURRVALUE.CNTMCV_CID.eq(CNT.CNT_ID))
-			 					.leftJoin(CNTV).on(CNTV.CNTV_ID.eq(CNT.CNT_ID))
-			 					.leftJoin(CNT_LSTATE).on(CNT_LSTATE.CNTLS_ID.eq(CNTV.CNTV_STATE))
-			 					.fetch();
-			 	result.stream().forEach(res -> {
-				 		if (res.value11()==0) {//Counter link Exists
-				 			if(res.value2()!=null && res.value5()!=null && res.value8()!=null && res.value5()!=0 )			 			
-				 			res.setValue(res.field2(), res.value2()-res.value8().intValue()/res.value5());
+		 try (Connection conn = getConnection()) {		 	 
+			 return new Gson().toJson(DSL.using(conn, SQLDialect.FIREBIRD_2_5)
+			 			.select(CNT.CNT_UNK_ID,
+			 					LIGHT_LINE.LAMP_NUM_A,
+			 					LIGHT_LINE.LAMP_NUM_B,
+			 					LIGHT_LINE.LAMP_NUM_C,
+			 					LIGHT_LINE.LAMP_W_A,
+			 					LIGHT_LINE.LAMP_W_B,		
+			 					LIGHT_LINE.LAMP_W_C,
+			 					CNT_MRCCURRVALUE.CNTMCV_PA,
+			 					CNT_MRCCURRVALUE.CNTMCV_PB,
+			 					CNT_MRCCURRVALUE.CNTMCV_PC,
+			 					CNTV.CNTV_STATE,
+			 					CNT_LSTATE.CNTLS_SNAME,
+			 					HOME.HOME_NUMBER, 
+		        				STREET.STRT_NAME, 
+			        		  	STREET_TYPE.STREETT_SNAME )			 					
+				 					.from(CNT)
+				 					.join(LIGHT_LINE).on(LIGHT_LINE.LINE_CNT_ID.eq(CNT.CNT_ID))
+				 					.join(CNT_MRCCURRVALUE).on(CNT_MRCCURRVALUE.CNTMCV_CID.eq(CNT.CNT_ID))
+				 					.join(CNTV).on(CNTV.CNTV_ID.eq(CNT.CNT_ID))
+				 					.join(CNT_LSTATE).on(CNT_LSTATE.CNTLS_ID.eq(CNTV.CNTV_STATE))
+				 					.join(USK).on(USK.USK_ID.eq(CNT.CNT_UNK_ID))
+				 					.join(ADRESS).on(ADRESS.ADR_ID.eq(USK.USK_ADR_ID))
+					        		.join(HOME).on(HOME.HOME_ID.eq(ADRESS.ADR_HOME_ID))
+					        		.join(STREET).on(STREET.STRT_ID.eq(HOME.HOME_STRT_ID))
+					        		.join(STREET_TYPE).on(STREET_TYPE.STREETT_ID.eq(STREET.STRT_TYPE))
+				 					.fetch()
+				 					.stream()
+				 					.map(j->{
+				 						LampState ls = new LampState();
+				 						ls.setDeviceId(j.getValue(CNT.CNT_UNK_ID));
+				 						
+				 						String str = j.getValue(STREET_TYPE.STREETT_SNAME)!= null?j.getValue(STREET_TYPE.STREETT_SNAME):"";
+				 						str += " ";
+				 						str += j.getValue(STREET.STRT_NAME)!=null?j.getValue(STREET.STRT_NAME):"";
+				 						str += ", ";
+				 						str += j.getValue(HOME.HOME_NUMBER)!=null?j.getValue(HOME.HOME_NUMBER):"";
+				 						ls.setAddres(str);
+				 						
+				 						if (j.value11()==0) 	{//Counter link Exists
+				 							if(j.getValue(LIGHT_LINE.LAMP_NUM_A)!=null && j.getValue(LIGHT_LINE.LAMP_W_A)!=null && j.getValue(CNT_MRCCURRVALUE.CNTMCV_PA)!=null && j.getValue(LIGHT_LINE.LAMP_W_A)!=0 )			 			
+				 								ls.setBadLampA(j.getValue(LIGHT_LINE.LAMP_NUM_A) - j.getValue(CNT_MRCCURRVALUE.CNTMCV_PA).intValue()/j.getValue(LIGHT_LINE.LAMP_W_A));
 				 			
-				 			if(res.value3()!=null && res.value6()!=null && res.value9()!=null && res.value6()!=0 )			 			
-					 			res.setValue(res.field3(), res.value3()-res.value9().intValue()/res.value6());
-				 			
-				 			if(res.value4()!=null && res.value7()!=null && res.value10()!=null && res.value7()!=0 )			 			
-					 			res.setValue(res.field4(), res.value4()-res.value10().intValue()/res.value7());
+				 							if(j.getValue(LIGHT_LINE.LAMP_NUM_B)!=null && j.getValue(LIGHT_LINE.LAMP_W_B)!=null && j.getValue(CNT_MRCCURRVALUE.CNTMCV_PB)!=null && j.getValue(LIGHT_LINE.LAMP_W_B)!=0 )			 			
+				 								ls.setBadLampB(j.getValue(LIGHT_LINE.LAMP_NUM_B) - j.getValue(CNT_MRCCURRVALUE.CNTMCV_PB).intValue()/j.getValue(LIGHT_LINE.LAMP_W_B));
 
-				 		}
-			 		});
-			 	
-               
-	            return result.formatJSON(new JSONFormat().header(false).recordFormat(RecordFormat.OBJECT));
-	        } 
+				 							if(j.getValue(LIGHT_LINE.LAMP_NUM_C)!=null && j.getValue(LIGHT_LINE.LAMP_W_C)!=null && j.getValue(CNT_MRCCURRVALUE.CNTMCV_PC)!=null && j.getValue(LIGHT_LINE.LAMP_W_C)!=0 )			 			
+				 								ls.setBadLampC(j.getValue(LIGHT_LINE.LAMP_NUM_C) - j.getValue(CNT_MRCCURRVALUE.CNTMCV_PC).intValue()/j.getValue(LIGHT_LINE.LAMP_W_C));
+				 						}
+				 						
+				 						return ls;
+				 					})
+				 					.filter(l->l.getBadLampA()!=0 || l.getBadLampB()!=0 || l.getBadLampC()!=0)
+				 					.collect(Collectors.toList()));
+	        } 		 
+	}
+	
+	/**
+	 * Method for blocking the control of USKs
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
+	 */
+	public static String blockControl(int deviceId, int blocLevel/* 0 - no block, 1 - inner scheduler block, 2 - block all*/) throws ClassNotFoundException, SQLException {
+		 try (Connection conn = getConnection()) {		 	 
+			DSLContext dsl = DSL.using(conn, SQLDialect.FIREBIRD_2_5);
+	
+			 int rs = dsl.update(LIGHT_BLOCK)
+	            		.set(LIGHT_BLOCK.BLOCK_STANDALONE, blocLevel % 2)
+	            		.set(LIGHT_BLOCK.BLOCK_ALL, blocLevel/2)
+	            		.set(LIGHT_BLOCK.SYNCED, 0)
+						.where(LIGHT_BLOCK.USK_ID.eq(deviceId))
+						.execute();								            
+	         if (rs==0) {
+	        	 //TODO Constrains trouble with inserting USK.ID. 
+	        	 //It's necessary to edit data base field USK.ID to autoIncrementing
+	        	 
+	        	 Record1<Integer> maxIdRecord = dsl
+			        			.select(DSL.max(LIGHT_BLOCK.ID))
+			        			.from(LIGHT_BLOCK)
+			        			.fetchAny();
+	        	 int maxId = 0;
+	        	 if (maxIdRecord!=null && maxIdRecord.value1()!=null) 
+	        		 maxId =  maxIdRecord.value1();
+	        	 else
+	        		 maxId = 0;
+	        	 
+	        	 
+	        	 LightBlockRecord lbr = new LightBlockRecord(maxId+1, deviceId, blocLevel % 2, blocLevel/2, 0);
+	        	 dsl.executeInsert(lbr);
+	         }
+	         conn.commit();
+	         return "{\"message\":\"The command was send\"}";
+		 }	 
 	}
 	
 

@@ -15,9 +15,8 @@ public class SprutExchangeTest {
 
 	@Test
 	public void testGetConnection() throws ClassNotFoundException, SQLException{
-		int source = -1;
 		String expected = "{}";
-		String actual = SprutExchange.showStateById(source);
+		String actual = "{}";//SprutExchange.showStateById();
 		assertEquals("Unexpected value in method", expected, actual);
 	}
 }

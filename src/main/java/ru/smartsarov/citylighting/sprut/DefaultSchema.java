@@ -34,6 +34,8 @@ import ru.smartsarov.citylighting.sprut.tables.CheckIp;
 import ru.smartsarov.citylighting.sprut.tables.City;
 import ru.smartsarov.citylighting.sprut.tables.CityType;
 import ru.smartsarov.citylighting.sprut.tables.Cnt;
+import ru.smartsarov.citylighting.sprut.tables.CntAlarm;
+import ru.smartsarov.citylighting.sprut.tables.CntAlarmPar;
 import ru.smartsarov.citylighting.sprut.tables.CntChange;
 import ru.smartsarov.citylighting.sprut.tables.CntChannel;
 import ru.smartsarov.citylighting.sprut.tables.CntChannelType;
@@ -293,7 +295,7 @@ import ru.smartsarov.citylighting.sprut.tables.records.UpdXgroupRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class DefaultSchema extends SchemaImpl {
 
-    private static final long serialVersionUID = -1253177727;
+    private static final long serialVersionUID = -2014509320;
 
     /**
      * The reference instance of <code></code>
@@ -410,6 +412,16 @@ public class DefaultSchema extends SchemaImpl {
      * The table <code>CNTV</code>.
      */
     public final Cntv CNTV = ru.smartsarov.citylighting.sprut.tables.Cntv.CNTV;
+
+    /**
+     * The table <code>CNT_ALARM</code>.
+     */
+    public final CntAlarm CNT_ALARM = ru.smartsarov.citylighting.sprut.tables.CntAlarm.CNT_ALARM;
+
+    /**
+     * The table <code>CNT_ALARM_PAR</code>.
+     */
+    public final CntAlarmPar CNT_ALARM_PAR = ru.smartsarov.citylighting.sprut.tables.CntAlarmPar.CNT_ALARM_PAR;
 
     /**
      * The table <code>CNT_CHANGE</code>.
@@ -1941,9 +1953,7 @@ public class DefaultSchema extends SchemaImpl {
             Sequences.ELEMENT_NOTIFICATION_ID,
             Sequences.EXMDL_ID,
             Sequences.FLT_ID,
-            Sequences.GEN_USK_COORDINATES_ID,
-            Sequences.GEN_USK_COORDINATES_ID1,
-            Sequences.GEN_USK_COORDINATES_ID2,
+            Sequences.GEN_USK_COOR_ID,
             Sequences.GPIN_ID,
             Sequences.GPLG_ID,
             Sequences.GPM_ID,
@@ -2047,6 +2057,8 @@ public class DefaultSchema extends SchemaImpl {
             Cntb.CNTB,
             Cntl.CNTL,
             Cntv.CNTV,
+            CntAlarm.CNT_ALARM,
+            CntAlarmPar.CNT_ALARM_PAR,
             CntChange.CNT_CHANGE,
             CntChannel.CNT_CHANNEL,
             CntChannelType.CNT_CHANNEL_TYPE,
