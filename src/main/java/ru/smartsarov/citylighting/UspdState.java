@@ -16,6 +16,10 @@ public class UspdState {
 	private String linkType;
 	private int blockStandalone;
 	private int blockAll;
+	private String lastCmd = "";
+	private String lastCmdState = "";
+	private Long tslastCmdServer;
+	private Long tslastCmdUsk;
 	private List<List<ClusterPoint>> geoData = null;
 
 	
@@ -131,6 +135,30 @@ public class UspdState {
 	}
 	public void setBlockAll(int blockAll) {
 		this.blockAll = blockAll;
+	}
+	public String getLastCmd() {
+		return lastCmd;
+	}
+	public void setLastCmd(String lastCmd) {
+		this.lastCmd = lastCmd;
+	}
+	public String getLastCmdState() {
+		return lastCmdState;
+	}
+	public void setLastCmdState(String lastCmdState) {
+		this.lastCmdState = lastCmdState;
+	}
+	public Long getTslastCmdServer() {
+		return tslastCmdServer;
+	}
+	public void setTslastCmdServer(Long tslastCmdServer) {
+		this.tslastCmdServer = tslastCmdServer;
+	}
+	public Long getTslastCmdUsk() {
+		return tslastCmdUsk;
+	}
+	public void setTslastCmdUsk(Long tslastCmdUsk) {
+		this.tslastCmdUsk = tslastCmdUsk;
 	}
 
 	

@@ -83,6 +83,100 @@ import ru.smartsarov.citylighting.sprut.tables.ElementType;
 import ru.smartsarov.citylighting.sprut.tables.Exmodule;
 import ru.smartsarov.citylighting.sprut.tables.ExmoduleType;
 import ru.smartsarov.citylighting.sprut.tables.Flat;
+import ru.smartsarov.citylighting.sprut.tables.GetAdress;
+import ru.smartsarov.citylighting.sprut.tables.GetAmrclog;
+import ru.smartsarov.citylighting.sprut.tables.GetArchElctrImpls_15;
+import ru.smartsarov.citylighting.sprut.tables.GetArchElctrIntel_15;
+import ru.smartsarov.citylighting.sprut.tables.GetArchGasImpls_15;
+import ru.smartsarov.citylighting.sprut.tables.GetArchWaterColdImpls_15;
+import ru.smartsarov.citylighting.sprut.tables.GetArchWaterHotImpls_15;
+import ru.smartsarov.citylighting.sprut.tables.GetCntChannel;
+import ru.smartsarov.citylighting.sprut.tables.GetCntControl;
+import ru.smartsarov.citylighting.sprut.tables.GetCntModbusRegisters;
+import ru.smartsarov.citylighting.sprut.tables.GetCntc_200;
+import ru.smartsarov.citylighting.sprut.tables.GetCntc_201;
+import ru.smartsarov.citylighting.sprut.tables.GetCntc_202;
+import ru.smartsarov.citylighting.sprut.tables.GetCntc_203;
+import ru.smartsarov.citylighting.sprut.tables.GetCntc_204;
+import ru.smartsarov.citylighting.sprut.tables.GetCntc_205;
+import ru.smartsarov.citylighting.sprut.tables.GetCntc_206;
+import ru.smartsarov.citylighting.sprut.tables.GetCntc_207;
+import ru.smartsarov.citylighting.sprut.tables.GetCntc_208;
+import ru.smartsarov.citylighting.sprut.tables.GetCntc_209;
+import ru.smartsarov.citylighting.sprut.tables.GetCntc_210;
+import ru.smartsarov.citylighting.sprut.tables.GetCntc_211;
+import ru.smartsarov.citylighting.sprut.tables.GetCntc_212;
+import ru.smartsarov.citylighting.sprut.tables.GetCntc_213;
+import ru.smartsarov.citylighting.sprut.tables.GetCntc_214;
+import ru.smartsarov.citylighting.sprut.tables.GetCntc_215;
+import ru.smartsarov.citylighting.sprut.tables.GetCntc_216;
+import ru.smartsarov.citylighting.sprut.tables.GetCntc_217;
+import ru.smartsarov.citylighting.sprut.tables.GetCntc_218;
+import ru.smartsarov.citylighting.sprut.tables.GetCntc_219;
+import ru.smartsarov.citylighting.sprut.tables.GetCntc_220;
+import ru.smartsarov.citylighting.sprut.tables.GetCntc_299;
+import ru.smartsarov.citylighting.sprut.tables.GetCntlForPeriod;
+import ru.smartsarov.citylighting.sprut.tables.GetCntlOnCidDatetime;
+import ru.smartsarov.citylighting.sprut.tables.GetCntlOnDatetime;
+import ru.smartsarov.citylighting.sprut.tables.GetCntlOnDatetime_2;
+import ru.smartsarov.citylighting.sprut.tables.GetCnttarch;
+import ru.smartsarov.citylighting.sprut.tables.GetCnttcurr;
+import ru.smartsarov.citylighting.sprut.tables.GetCnttcurrLook;
+import ru.smartsarov.citylighting.sprut.tables.GetCnttcurrNew;
+import ru.smartsarov.citylighting.sprut.tables.GetControlState;
+import ru.smartsarov.citylighting.sprut.tables.GetGprsCurr;
+import ru.smartsarov.citylighting.sprut.tables.GetGprsTraffic;
+import ru.smartsarov.citylighting.sprut.tables.GetGrpType;
+import ru.smartsarov.citylighting.sprut.tables.GetGuardLineCurr;
+import ru.smartsarov.citylighting.sprut.tables.GetGuardLineLog;
+import ru.smartsarov.citylighting.sprut.tables.GetGuardLogMonth;
+import ru.smartsarov.citylighting.sprut.tables.GetGuardPinCurr;
+import ru.smartsarov.citylighting.sprut.tables.GetGuardPinCurrOn;
+import ru.smartsarov.citylighting.sprut.tables.GetGuardPinCurr_2;
+import ru.smartsarov.citylighting.sprut.tables.GetGuardPinLastEventAll;
+import ru.smartsarov.citylighting.sprut.tables.GetGuardPinLastEventAllz;
+import ru.smartsarov.citylighting.sprut.tables.GetGuardPinLogLastEvent;
+import ru.smartsarov.citylighting.sprut.tables.GetGuardPinLogSelect;
+import ru.smartsarov.citylighting.sprut.tables.GetGuardPinLogSelect_1;
+import ru.smartsarov.citylighting.sprut.tables.GetGuardUskLog;
+import ru.smartsarov.citylighting.sprut.tables.GetGuardZoneLog;
+import ru.smartsarov.citylighting.sprut.tables.GetIcntdl;
+import ru.smartsarov.citylighting.sprut.tables.GetIcnthdl;
+import ru.smartsarov.citylighting.sprut.tables.GetIcnthl;
+import ru.smartsarov.citylighting.sprut.tables.GetImpulseArchColdWater;
+import ru.smartsarov.citylighting.sprut.tables.GetImpulseArchElectro;
+import ru.smartsarov.citylighting.sprut.tables.GetImpulseArchHotWater;
+import ru.smartsarov.citylighting.sprut.tables.GetImpulseCntv;
+import ru.smartsarov.citylighting.sprut.tables.GetImpulseCntvColdWater;
+import ru.smartsarov.citylighting.sprut.tables.GetImpulseCntvElectro;
+import ru.smartsarov.citylighting.sprut.tables.GetImpulseCntvGaz;
+import ru.smartsarov.citylighting.sprut.tables.GetImpulseCntvHotWater;
+import ru.smartsarov.citylighting.sprut.tables.GetIntelligentArchElectro_15;
+import ru.smartsarov.citylighting.sprut.tables.GetIntelligentElectro;
+import ru.smartsarov.citylighting.sprut.tables.GetIntelligentElectroKoeff;
+import ru.smartsarov.citylighting.sprut.tables.GetLedCurr;
+import ru.smartsarov.citylighting.sprut.tables.GetMrclog;
+import ru.smartsarov.citylighting.sprut.tables.GetMrcloglist;
+import ru.smartsarov.citylighting.sprut.tables.GetMrcpwrlog;
+import ru.smartsarov.citylighting.sprut.tables.GetOwenpr110Curr;
+import ru.smartsarov.citylighting.sprut.tables.GetPcsId;
+import ru.smartsarov.citylighting.sprut.tables.GetPkeLog;
+import ru.smartsarov.citylighting.sprut.tables.GetPkeLogJoined;
+import ru.smartsarov.citylighting.sprut.tables.GetPkeSums;
+import ru.smartsarov.citylighting.sprut.tables.GetPkeTimes;
+import ru.smartsarov.citylighting.sprut.tables.GetProcedureField;
+import ru.smartsarov.citylighting.sprut.tables.GetTableField;
+import ru.smartsarov.citylighting.sprut.tables.GetUska;
+import ru.smartsarov.citylighting.sprut.tables.GetUskc;
+import ru.smartsarov.citylighting.sprut.tables.GetUskcExt;
+import ru.smartsarov.citylighting.sprut.tables.GetUsklLog;
+import ru.smartsarov.citylighting.sprut.tables.GetUsklc;
+import ru.smartsarov.citylighting.sprut.tables.GetUspduno;
+import ru.smartsarov.citylighting.sprut.tables.GetUspdunoControlNoadNet;
+import ru.smartsarov.citylighting.sprut.tables.GetUspdunoControlNoadState;
+import ru.smartsarov.citylighting.sprut.tables.GetUspdunoExt;
+import ru.smartsarov.citylighting.sprut.tables.GetXgrpType;
+import ru.smartsarov.citylighting.sprut.tables.GetXinterfase;
 import ru.smartsarov.citylighting.sprut.tables.GprsCurr;
 import ru.smartsarov.citylighting.sprut.tables.GprsTelemetry;
 import ru.smartsarov.citylighting.sprut.tables.GprsTraffic;
@@ -255,6 +349,100 @@ import ru.smartsarov.citylighting.sprut.tables.Xrule;
 import ru.smartsarov.citylighting.sprut.tables.Xuser;
 import ru.smartsarov.citylighting.sprut.tables.records.CheckIpRecord;
 import ru.smartsarov.citylighting.sprut.tables.records.DualRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetAdressRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetAmrclogRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetArchElctrImpls_15Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetArchElctrIntel_15Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetArchGasImpls_15Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetArchWaterColdImpls_15Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetArchWaterHotImpls_15Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntChannelRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntControlRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntModbusRegistersRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntc_200Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntc_201Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntc_202Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntc_203Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntc_204Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntc_205Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntc_206Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntc_207Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntc_208Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntc_209Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntc_210Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntc_211Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntc_212Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntc_213Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntc_214Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntc_215Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntc_216Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntc_217Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntc_218Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntc_219Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntc_220Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntc_299Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntlForPeriodRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntlOnCidDatetimeRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntlOnDatetimeRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCntlOnDatetime_2Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCnttarchRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCnttcurrLookRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCnttcurrNewRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetCnttcurrRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetControlStateRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetGprsCurrRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetGprsTrafficRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetGrpTypeRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetGuardLineCurrRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetGuardLineLogRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetGuardLogMonthRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetGuardPinCurrOnRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetGuardPinCurrRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetGuardPinCurr_2Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetGuardPinLastEventAllRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetGuardPinLastEventAllzRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetGuardPinLogLastEventRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetGuardPinLogSelectRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetGuardPinLogSelect_1Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetGuardUskLogRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetGuardZoneLogRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetIcntdlRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetIcnthdlRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetIcnthlRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetImpulseArchColdWaterRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetImpulseArchElectroRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetImpulseArchHotWaterRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetImpulseCntvColdWaterRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetImpulseCntvElectroRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetImpulseCntvGazRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetImpulseCntvHotWaterRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetImpulseCntvRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetIntelligentArchElectro_15Record;
+import ru.smartsarov.citylighting.sprut.tables.records.GetIntelligentElectroKoeffRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetIntelligentElectroRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetLedCurrRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetMrclogRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetMrcloglistRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetMrcpwrlogRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetOwenpr110CurrRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetPcsIdRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetPkeLogJoinedRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetPkeLogRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetPkeSumsRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetPkeTimesRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetProcedureFieldRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetTableFieldRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetUskaRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetUskcExtRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetUskcRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetUsklLogRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetUsklcRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetUspdunoControlNoadNetRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetUspdunoControlNoadStateRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetUspdunoExtRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetUspdunoRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetXgrpTypeRecord;
+import ru.smartsarov.citylighting.sprut.tables.records.GetXinterfaseRecord;
 import ru.smartsarov.citylighting.sprut.tables.records.GprsTrafficReportRecord;
 import ru.smartsarov.citylighting.sprut.tables.records.InsGuardLogRecord;
 import ru.smartsarov.citylighting.sprut.tables.records.InsGuardLog_2Record;
@@ -672,6 +860,2254 @@ public class Tables {
      * The table <code>FLAT</code>.
      */
     public static final Flat FLAT = ru.smartsarov.citylighting.sprut.tables.Flat.FLAT;
+
+    /**
+     * The table <code>GET_ADRESS</code>.
+     */
+    public static final GetAdress GET_ADRESS = ru.smartsarov.citylighting.sprut.tables.GetAdress.GET_ADRESS;
+
+    /**
+     * Call <code>GET_ADRESS</code>.
+     */
+    public static Result<GetAdressRecord> GET_ADRESS(Configuration configuration, Integer adrId, Integer adrType) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetAdress.GET_ADRESS.call(adrId, adrType)).fetch();
+    }
+
+    /**
+     * Get <code>GET_ADRESS</code> as a table.
+     */
+    public static GetAdress GET_ADRESS(Integer adrId, Integer adrType) {
+        return ru.smartsarov.citylighting.sprut.tables.GetAdress.GET_ADRESS.call(adrId, adrType);
+    }
+
+    /**
+     * Get <code>GET_ADRESS</code> as a table.
+     */
+    public static GetAdress GET_ADRESS(Field<Integer> adrId, Field<Integer> adrType) {
+        return ru.smartsarov.citylighting.sprut.tables.GetAdress.GET_ADRESS.call(adrId, adrType);
+    }
+
+    /**
+     * The table <code>GET_AMRCLOG</code>.
+     */
+    public static final GetAmrclog GET_AMRCLOG = ru.smartsarov.citylighting.sprut.tables.GetAmrclog.GET_AMRCLOG;
+
+    /**
+     * Call <code>GET_AMRCLOG</code>.
+     */
+    public static Result<GetAmrclogRecord> GET_AMRCLOG(Configuration configuration, Integer aid, Timestamp sdate, Timestamp edate) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetAmrclog.GET_AMRCLOG.call(aid, sdate, edate)).fetch();
+    }
+
+    /**
+     * Get <code>GET_AMRCLOG</code> as a table.
+     */
+    public static GetAmrclog GET_AMRCLOG(Integer aid, Timestamp sdate, Timestamp edate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetAmrclog.GET_AMRCLOG.call(aid, sdate, edate);
+    }
+
+    /**
+     * Get <code>GET_AMRCLOG</code> as a table.
+     */
+    public static GetAmrclog GET_AMRCLOG(Field<Integer> aid, Field<Timestamp> sdate, Field<Timestamp> edate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetAmrclog.GET_AMRCLOG.call(aid, sdate, edate);
+    }
+
+    /**
+     * The table <code>GET_ARCH_ELCTR_IMPLS_15</code>.
+     */
+    public static final GetArchElctrImpls_15 GET_ARCH_ELCTR_IMPLS_15 = ru.smartsarov.citylighting.sprut.tables.GetArchElctrImpls_15.GET_ARCH_ELCTR_IMPLS_15;
+
+    /**
+     * Call <code>GET_ARCH_ELCTR_IMPLS_15</code>.
+     */
+    public static Result<GetArchElctrImpls_15Record> GET_ARCH_ELCTR_IMPLS_15(Configuration configuration, String login, String pass, Integer cid, Date fromDate, Date toDate, Integer transConsider) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetArchElctrImpls_15.GET_ARCH_ELCTR_IMPLS_15.call(login, pass, cid, fromDate, toDate, transConsider)).fetch();
+    }
+
+    /**
+     * Get <code>GET_ARCH_ELCTR_IMPLS_15</code> as a table.
+     */
+    public static GetArchElctrImpls_15 GET_ARCH_ELCTR_IMPLS_15(String login, String pass, Integer cid, Date fromDate, Date toDate, Integer transConsider) {
+        return ru.smartsarov.citylighting.sprut.tables.GetArchElctrImpls_15.GET_ARCH_ELCTR_IMPLS_15.call(login, pass, cid, fromDate, toDate, transConsider);
+    }
+
+    /**
+     * Get <code>GET_ARCH_ELCTR_IMPLS_15</code> as a table.
+     */
+    public static GetArchElctrImpls_15 GET_ARCH_ELCTR_IMPLS_15(Field<String> login, Field<String> pass, Field<Integer> cid, Field<Date> fromDate, Field<Date> toDate, Field<Integer> transConsider) {
+        return ru.smartsarov.citylighting.sprut.tables.GetArchElctrImpls_15.GET_ARCH_ELCTR_IMPLS_15.call(login, pass, cid, fromDate, toDate, transConsider);
+    }
+
+    /**
+     * The table <code>GET_ARCH_ELCTR_INTEL_15</code>.
+     */
+    public static final GetArchElctrIntel_15 GET_ARCH_ELCTR_INTEL_15 = ru.smartsarov.citylighting.sprut.tables.GetArchElctrIntel_15.GET_ARCH_ELCTR_INTEL_15;
+
+    /**
+     * Call <code>GET_ARCH_ELCTR_INTEL_15</code>.
+     */
+    public static Result<GetArchElctrIntel_15Record> GET_ARCH_ELCTR_INTEL_15(Configuration configuration, String login, String pass, Integer cid, Date fromDate, Date toDate, Integer transConsider) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetArchElctrIntel_15.GET_ARCH_ELCTR_INTEL_15.call(login, pass, cid, fromDate, toDate, transConsider)).fetch();
+    }
+
+    /**
+     * Get <code>GET_ARCH_ELCTR_INTEL_15</code> as a table.
+     */
+    public static GetArchElctrIntel_15 GET_ARCH_ELCTR_INTEL_15(String login, String pass, Integer cid, Date fromDate, Date toDate, Integer transConsider) {
+        return ru.smartsarov.citylighting.sprut.tables.GetArchElctrIntel_15.GET_ARCH_ELCTR_INTEL_15.call(login, pass, cid, fromDate, toDate, transConsider);
+    }
+
+    /**
+     * Get <code>GET_ARCH_ELCTR_INTEL_15</code> as a table.
+     */
+    public static GetArchElctrIntel_15 GET_ARCH_ELCTR_INTEL_15(Field<String> login, Field<String> pass, Field<Integer> cid, Field<Date> fromDate, Field<Date> toDate, Field<Integer> transConsider) {
+        return ru.smartsarov.citylighting.sprut.tables.GetArchElctrIntel_15.GET_ARCH_ELCTR_INTEL_15.call(login, pass, cid, fromDate, toDate, transConsider);
+    }
+
+    /**
+     * The table <code>GET_ARCH_GAS_IMPLS_15</code>.
+     */
+    public static final GetArchGasImpls_15 GET_ARCH_GAS_IMPLS_15 = ru.smartsarov.citylighting.sprut.tables.GetArchGasImpls_15.GET_ARCH_GAS_IMPLS_15;
+
+    /**
+     * Call <code>GET_ARCH_GAS_IMPLS_15</code>.
+     */
+    public static Result<GetArchGasImpls_15Record> GET_ARCH_GAS_IMPLS_15(Configuration configuration, String login, String pass, Integer cid, Date fromDate, Date toDate) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetArchGasImpls_15.GET_ARCH_GAS_IMPLS_15.call(login, pass, cid, fromDate, toDate)).fetch();
+    }
+
+    /**
+     * Get <code>GET_ARCH_GAS_IMPLS_15</code> as a table.
+     */
+    public static GetArchGasImpls_15 GET_ARCH_GAS_IMPLS_15(String login, String pass, Integer cid, Date fromDate, Date toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetArchGasImpls_15.GET_ARCH_GAS_IMPLS_15.call(login, pass, cid, fromDate, toDate);
+    }
+
+    /**
+     * Get <code>GET_ARCH_GAS_IMPLS_15</code> as a table.
+     */
+    public static GetArchGasImpls_15 GET_ARCH_GAS_IMPLS_15(Field<String> login, Field<String> pass, Field<Integer> cid, Field<Date> fromDate, Field<Date> toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetArchGasImpls_15.GET_ARCH_GAS_IMPLS_15.call(login, pass, cid, fromDate, toDate);
+    }
+
+    /**
+     * The table <code>GET_ARCH_WATER_COLD_IMPLS_15</code>.
+     */
+    public static final GetArchWaterColdImpls_15 GET_ARCH_WATER_COLD_IMPLS_15 = ru.smartsarov.citylighting.sprut.tables.GetArchWaterColdImpls_15.GET_ARCH_WATER_COLD_IMPLS_15;
+
+    /**
+     * Call <code>GET_ARCH_WATER_COLD_IMPLS_15</code>.
+     */
+    public static Result<GetArchWaterColdImpls_15Record> GET_ARCH_WATER_COLD_IMPLS_15(Configuration configuration, String login, String pass, Integer cid, Date fromDate, Date toDate) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetArchWaterColdImpls_15.GET_ARCH_WATER_COLD_IMPLS_15.call(login, pass, cid, fromDate, toDate)).fetch();
+    }
+
+    /**
+     * Get <code>GET_ARCH_WATER_COLD_IMPLS_15</code> as a table.
+     */
+    public static GetArchWaterColdImpls_15 GET_ARCH_WATER_COLD_IMPLS_15(String login, String pass, Integer cid, Date fromDate, Date toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetArchWaterColdImpls_15.GET_ARCH_WATER_COLD_IMPLS_15.call(login, pass, cid, fromDate, toDate);
+    }
+
+    /**
+     * Get <code>GET_ARCH_WATER_COLD_IMPLS_15</code> as a table.
+     */
+    public static GetArchWaterColdImpls_15 GET_ARCH_WATER_COLD_IMPLS_15(Field<String> login, Field<String> pass, Field<Integer> cid, Field<Date> fromDate, Field<Date> toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetArchWaterColdImpls_15.GET_ARCH_WATER_COLD_IMPLS_15.call(login, pass, cid, fromDate, toDate);
+    }
+
+    /**
+     * The table <code>GET_ARCH_WATER_HOT_IMPLS_15</code>.
+     */
+    public static final GetArchWaterHotImpls_15 GET_ARCH_WATER_HOT_IMPLS_15 = ru.smartsarov.citylighting.sprut.tables.GetArchWaterHotImpls_15.GET_ARCH_WATER_HOT_IMPLS_15;
+
+    /**
+     * Call <code>GET_ARCH_WATER_HOT_IMPLS_15</code>.
+     */
+    public static Result<GetArchWaterHotImpls_15Record> GET_ARCH_WATER_HOT_IMPLS_15(Configuration configuration, String login, String pass, Integer cid, Date fromDate, Date toDate) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetArchWaterHotImpls_15.GET_ARCH_WATER_HOT_IMPLS_15.call(login, pass, cid, fromDate, toDate)).fetch();
+    }
+
+    /**
+     * Get <code>GET_ARCH_WATER_HOT_IMPLS_15</code> as a table.
+     */
+    public static GetArchWaterHotImpls_15 GET_ARCH_WATER_HOT_IMPLS_15(String login, String pass, Integer cid, Date fromDate, Date toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetArchWaterHotImpls_15.GET_ARCH_WATER_HOT_IMPLS_15.call(login, pass, cid, fromDate, toDate);
+    }
+
+    /**
+     * Get <code>GET_ARCH_WATER_HOT_IMPLS_15</code> as a table.
+     */
+    public static GetArchWaterHotImpls_15 GET_ARCH_WATER_HOT_IMPLS_15(Field<String> login, Field<String> pass, Field<Integer> cid, Field<Date> fromDate, Field<Date> toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetArchWaterHotImpls_15.GET_ARCH_WATER_HOT_IMPLS_15.call(login, pass, cid, fromDate, toDate);
+    }
+
+    /**
+     * The table <code>GET_CNTC_200</code>.
+     */
+    public static final GetCntc_200 GET_CNTC_200 = ru.smartsarov.citylighting.sprut.tables.GetCntc_200.GET_CNTC_200;
+
+    /**
+     * Call <code>GET_CNTC_200</code>.
+     */
+    public static Result<GetCntc_200Record> GET_CNTC_200(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntc_200.GET_CNTC_200.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTC_200</code> as a table.
+     */
+    public static GetCntc_200 GET_CNTC_200() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntc_200.GET_CNTC_200.call();
+    }
+
+    /**
+     * The table <code>GET_CNTC_201</code>.
+     */
+    public static final GetCntc_201 GET_CNTC_201 = ru.smartsarov.citylighting.sprut.tables.GetCntc_201.GET_CNTC_201;
+
+    /**
+     * Call <code>GET_CNTC_201</code>.
+     */
+    public static Result<GetCntc_201Record> GET_CNTC_201(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntc_201.GET_CNTC_201.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTC_201</code> as a table.
+     */
+    public static GetCntc_201 GET_CNTC_201() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntc_201.GET_CNTC_201.call();
+    }
+
+    /**
+     * The table <code>GET_CNTC_202</code>.
+     */
+    public static final GetCntc_202 GET_CNTC_202 = ru.smartsarov.citylighting.sprut.tables.GetCntc_202.GET_CNTC_202;
+
+    /**
+     * Call <code>GET_CNTC_202</code>.
+     */
+    public static Result<GetCntc_202Record> GET_CNTC_202(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntc_202.GET_CNTC_202.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTC_202</code> as a table.
+     */
+    public static GetCntc_202 GET_CNTC_202() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntc_202.GET_CNTC_202.call();
+    }
+
+    /**
+     * The table <code>GET_CNTC_203</code>.
+     */
+    public static final GetCntc_203 GET_CNTC_203 = ru.smartsarov.citylighting.sprut.tables.GetCntc_203.GET_CNTC_203;
+
+    /**
+     * Call <code>GET_CNTC_203</code>.
+     */
+    public static Result<GetCntc_203Record> GET_CNTC_203(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntc_203.GET_CNTC_203.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTC_203</code> as a table.
+     */
+    public static GetCntc_203 GET_CNTC_203() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntc_203.GET_CNTC_203.call();
+    }
+
+    /**
+     * The table <code>GET_CNTC_204</code>.
+     */
+    public static final GetCntc_204 GET_CNTC_204 = ru.smartsarov.citylighting.sprut.tables.GetCntc_204.GET_CNTC_204;
+
+    /**
+     * Call <code>GET_CNTC_204</code>.
+     */
+    public static Result<GetCntc_204Record> GET_CNTC_204(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntc_204.GET_CNTC_204.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTC_204</code> as a table.
+     */
+    public static GetCntc_204 GET_CNTC_204() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntc_204.GET_CNTC_204.call();
+    }
+
+    /**
+     * The table <code>GET_CNTC_205</code>.
+     */
+    public static final GetCntc_205 GET_CNTC_205 = ru.smartsarov.citylighting.sprut.tables.GetCntc_205.GET_CNTC_205;
+
+    /**
+     * Call <code>GET_CNTC_205</code>.
+     */
+    public static Result<GetCntc_205Record> GET_CNTC_205(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntc_205.GET_CNTC_205.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTC_205</code> as a table.
+     */
+    public static GetCntc_205 GET_CNTC_205() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntc_205.GET_CNTC_205.call();
+    }
+
+    /**
+     * The table <code>GET_CNTC_206</code>.
+     */
+    public static final GetCntc_206 GET_CNTC_206 = ru.smartsarov.citylighting.sprut.tables.GetCntc_206.GET_CNTC_206;
+
+    /**
+     * Call <code>GET_CNTC_206</code>.
+     */
+    public static Result<GetCntc_206Record> GET_CNTC_206(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntc_206.GET_CNTC_206.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTC_206</code> as a table.
+     */
+    public static GetCntc_206 GET_CNTC_206() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntc_206.GET_CNTC_206.call();
+    }
+
+    /**
+     * The table <code>GET_CNTC_207</code>.
+     */
+    public static final GetCntc_207 GET_CNTC_207 = ru.smartsarov.citylighting.sprut.tables.GetCntc_207.GET_CNTC_207;
+
+    /**
+     * Call <code>GET_CNTC_207</code>.
+     */
+    public static Result<GetCntc_207Record> GET_CNTC_207(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntc_207.GET_CNTC_207.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTC_207</code> as a table.
+     */
+    public static GetCntc_207 GET_CNTC_207() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntc_207.GET_CNTC_207.call();
+    }
+
+    /**
+     * The table <code>GET_CNTC_208</code>.
+     */
+    public static final GetCntc_208 GET_CNTC_208 = ru.smartsarov.citylighting.sprut.tables.GetCntc_208.GET_CNTC_208;
+
+    /**
+     * Call <code>GET_CNTC_208</code>.
+     */
+    public static Result<GetCntc_208Record> GET_CNTC_208(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntc_208.GET_CNTC_208.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTC_208</code> as a table.
+     */
+    public static GetCntc_208 GET_CNTC_208() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntc_208.GET_CNTC_208.call();
+    }
+
+    /**
+     * The table <code>GET_CNTC_209</code>.
+     */
+    public static final GetCntc_209 GET_CNTC_209 = ru.smartsarov.citylighting.sprut.tables.GetCntc_209.GET_CNTC_209;
+
+    /**
+     * Call <code>GET_CNTC_209</code>.
+     */
+    public static Result<GetCntc_209Record> GET_CNTC_209(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntc_209.GET_CNTC_209.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTC_209</code> as a table.
+     */
+    public static GetCntc_209 GET_CNTC_209() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntc_209.GET_CNTC_209.call();
+    }
+
+    /**
+     * The table <code>GET_CNTC_210</code>.
+     */
+    public static final GetCntc_210 GET_CNTC_210 = ru.smartsarov.citylighting.sprut.tables.GetCntc_210.GET_CNTC_210;
+
+    /**
+     * Call <code>GET_CNTC_210</code>.
+     */
+    public static Result<GetCntc_210Record> GET_CNTC_210(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntc_210.GET_CNTC_210.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTC_210</code> as a table.
+     */
+    public static GetCntc_210 GET_CNTC_210() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntc_210.GET_CNTC_210.call();
+    }
+
+    /**
+     * The table <code>GET_CNTC_211</code>.
+     */
+    public static final GetCntc_211 GET_CNTC_211 = ru.smartsarov.citylighting.sprut.tables.GetCntc_211.GET_CNTC_211;
+
+    /**
+     * Call <code>GET_CNTC_211</code>.
+     */
+    public static Result<GetCntc_211Record> GET_CNTC_211(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntc_211.GET_CNTC_211.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTC_211</code> as a table.
+     */
+    public static GetCntc_211 GET_CNTC_211() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntc_211.GET_CNTC_211.call();
+    }
+
+    /**
+     * The table <code>GET_CNTC_212</code>.
+     */
+    public static final GetCntc_212 GET_CNTC_212 = ru.smartsarov.citylighting.sprut.tables.GetCntc_212.GET_CNTC_212;
+
+    /**
+     * Call <code>GET_CNTC_212</code>.
+     */
+    public static Result<GetCntc_212Record> GET_CNTC_212(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntc_212.GET_CNTC_212.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTC_212</code> as a table.
+     */
+    public static GetCntc_212 GET_CNTC_212() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntc_212.GET_CNTC_212.call();
+    }
+
+    /**
+     * The table <code>GET_CNTC_213</code>.
+     */
+    public static final GetCntc_213 GET_CNTC_213 = ru.smartsarov.citylighting.sprut.tables.GetCntc_213.GET_CNTC_213;
+
+    /**
+     * Call <code>GET_CNTC_213</code>.
+     */
+    public static Result<GetCntc_213Record> GET_CNTC_213(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntc_213.GET_CNTC_213.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTC_213</code> as a table.
+     */
+    public static GetCntc_213 GET_CNTC_213() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntc_213.GET_CNTC_213.call();
+    }
+
+    /**
+     * The table <code>GET_CNTC_214</code>.
+     */
+    public static final GetCntc_214 GET_CNTC_214 = ru.smartsarov.citylighting.sprut.tables.GetCntc_214.GET_CNTC_214;
+
+    /**
+     * Call <code>GET_CNTC_214</code>.
+     */
+    public static Result<GetCntc_214Record> GET_CNTC_214(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntc_214.GET_CNTC_214.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTC_214</code> as a table.
+     */
+    public static GetCntc_214 GET_CNTC_214() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntc_214.GET_CNTC_214.call();
+    }
+
+    /**
+     * The table <code>GET_CNTC_215</code>.
+     */
+    public static final GetCntc_215 GET_CNTC_215 = ru.smartsarov.citylighting.sprut.tables.GetCntc_215.GET_CNTC_215;
+
+    /**
+     * Call <code>GET_CNTC_215</code>.
+     */
+    public static Result<GetCntc_215Record> GET_CNTC_215(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntc_215.GET_CNTC_215.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTC_215</code> as a table.
+     */
+    public static GetCntc_215 GET_CNTC_215() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntc_215.GET_CNTC_215.call();
+    }
+
+    /**
+     * The table <code>GET_CNTC_216</code>.
+     */
+    public static final GetCntc_216 GET_CNTC_216 = ru.smartsarov.citylighting.sprut.tables.GetCntc_216.GET_CNTC_216;
+
+    /**
+     * Call <code>GET_CNTC_216</code>.
+     */
+    public static Result<GetCntc_216Record> GET_CNTC_216(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntc_216.GET_CNTC_216.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTC_216</code> as a table.
+     */
+    public static GetCntc_216 GET_CNTC_216() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntc_216.GET_CNTC_216.call();
+    }
+
+    /**
+     * The table <code>GET_CNTC_217</code>.
+     */
+    public static final GetCntc_217 GET_CNTC_217 = ru.smartsarov.citylighting.sprut.tables.GetCntc_217.GET_CNTC_217;
+
+    /**
+     * Call <code>GET_CNTC_217</code>.
+     */
+    public static Result<GetCntc_217Record> GET_CNTC_217(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntc_217.GET_CNTC_217.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTC_217</code> as a table.
+     */
+    public static GetCntc_217 GET_CNTC_217() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntc_217.GET_CNTC_217.call();
+    }
+
+    /**
+     * The table <code>GET_CNTC_218</code>.
+     */
+    public static final GetCntc_218 GET_CNTC_218 = ru.smartsarov.citylighting.sprut.tables.GetCntc_218.GET_CNTC_218;
+
+    /**
+     * Call <code>GET_CNTC_218</code>.
+     */
+    public static Result<GetCntc_218Record> GET_CNTC_218(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntc_218.GET_CNTC_218.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTC_218</code> as a table.
+     */
+    public static GetCntc_218 GET_CNTC_218() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntc_218.GET_CNTC_218.call();
+    }
+
+    /**
+     * The table <code>GET_CNTC_219</code>.
+     */
+    public static final GetCntc_219 GET_CNTC_219 = ru.smartsarov.citylighting.sprut.tables.GetCntc_219.GET_CNTC_219;
+
+    /**
+     * Call <code>GET_CNTC_219</code>.
+     */
+    public static Result<GetCntc_219Record> GET_CNTC_219(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntc_219.GET_CNTC_219.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTC_219</code> as a table.
+     */
+    public static GetCntc_219 GET_CNTC_219() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntc_219.GET_CNTC_219.call();
+    }
+
+    /**
+     * The table <code>GET_CNTC_220</code>.
+     */
+    public static final GetCntc_220 GET_CNTC_220 = ru.smartsarov.citylighting.sprut.tables.GetCntc_220.GET_CNTC_220;
+
+    /**
+     * Call <code>GET_CNTC_220</code>.
+     */
+    public static Result<GetCntc_220Record> GET_CNTC_220(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntc_220.GET_CNTC_220.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTC_220</code> as a table.
+     */
+    public static GetCntc_220 GET_CNTC_220() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntc_220.GET_CNTC_220.call();
+    }
+
+    /**
+     * The table <code>GET_CNTC_299</code>.
+     */
+    public static final GetCntc_299 GET_CNTC_299 = ru.smartsarov.citylighting.sprut.tables.GetCntc_299.GET_CNTC_299;
+
+    /**
+     * Call <code>GET_CNTC_299</code>.
+     */
+    public static Result<GetCntc_299Record> GET_CNTC_299(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntc_299.GET_CNTC_299.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTC_299</code> as a table.
+     */
+    public static GetCntc_299 GET_CNTC_299() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntc_299.GET_CNTC_299.call();
+    }
+
+    /**
+     * The table <code>GET_CNTL_FOR_PERIOD</code>.
+     */
+    public static final GetCntlForPeriod GET_CNTL_FOR_PERIOD = ru.smartsarov.citylighting.sprut.tables.GetCntlForPeriod.GET_CNTL_FOR_PERIOD;
+
+    /**
+     * Call <code>GET_CNTL_FOR_PERIOD</code>.
+     */
+    public static Result<GetCntlForPeriodRecord> GET_CNTL_FOR_PERIOD(Configuration configuration, String login, String pass, String cntList, Timestamp startdate, Timestamp enddate) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntlForPeriod.GET_CNTL_FOR_PERIOD.call(login, pass, cntList, startdate, enddate)).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTL_FOR_PERIOD</code> as a table.
+     */
+    public static GetCntlForPeriod GET_CNTL_FOR_PERIOD(String login, String pass, String cntList, Timestamp startdate, Timestamp enddate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntlForPeriod.GET_CNTL_FOR_PERIOD.call(login, pass, cntList, startdate, enddate);
+    }
+
+    /**
+     * Get <code>GET_CNTL_FOR_PERIOD</code> as a table.
+     */
+    public static GetCntlForPeriod GET_CNTL_FOR_PERIOD(Field<String> login, Field<String> pass, Field<String> cntList, Field<Timestamp> startdate, Field<Timestamp> enddate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntlForPeriod.GET_CNTL_FOR_PERIOD.call(login, pass, cntList, startdate, enddate);
+    }
+
+    /**
+     * The table <code>GET_CNTL_ON_CID_DATETIME</code>.
+     */
+    public static final GetCntlOnCidDatetime GET_CNTL_ON_CID_DATETIME = ru.smartsarov.citylighting.sprut.tables.GetCntlOnCidDatetime.GET_CNTL_ON_CID_DATETIME;
+
+    /**
+     * Call <code>GET_CNTL_ON_CID_DATETIME</code>.
+     */
+    public static Result<GetCntlOnCidDatetimeRecord> GET_CNTL_ON_CID_DATETIME(Configuration configuration, Integer cntId, Timestamp tdatetime) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntlOnCidDatetime.GET_CNTL_ON_CID_DATETIME.call(cntId, tdatetime)).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTL_ON_CID_DATETIME</code> as a table.
+     */
+    public static GetCntlOnCidDatetime GET_CNTL_ON_CID_DATETIME(Integer cntId, Timestamp tdatetime) {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntlOnCidDatetime.GET_CNTL_ON_CID_DATETIME.call(cntId, tdatetime);
+    }
+
+    /**
+     * Get <code>GET_CNTL_ON_CID_DATETIME</code> as a table.
+     */
+    public static GetCntlOnCidDatetime GET_CNTL_ON_CID_DATETIME(Field<Integer> cntId, Field<Timestamp> tdatetime) {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntlOnCidDatetime.GET_CNTL_ON_CID_DATETIME.call(cntId, tdatetime);
+    }
+
+    /**
+     * The table <code>GET_CNTL_ON_DATETIME</code>.
+     */
+    public static final GetCntlOnDatetime GET_CNTL_ON_DATETIME = ru.smartsarov.citylighting.sprut.tables.GetCntlOnDatetime.GET_CNTL_ON_DATETIME;
+
+    /**
+     * Call <code>GET_CNTL_ON_DATETIME</code>.
+     */
+    public static Result<GetCntlOnDatetimeRecord> GET_CNTL_ON_DATETIME(Configuration configuration, String login, String pass, Timestamp tdatetime) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntlOnDatetime.GET_CNTL_ON_DATETIME.call(login, pass, tdatetime)).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTL_ON_DATETIME</code> as a table.
+     */
+    public static GetCntlOnDatetime GET_CNTL_ON_DATETIME(String login, String pass, Timestamp tdatetime) {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntlOnDatetime.GET_CNTL_ON_DATETIME.call(login, pass, tdatetime);
+    }
+
+    /**
+     * Get <code>GET_CNTL_ON_DATETIME</code> as a table.
+     */
+    public static GetCntlOnDatetime GET_CNTL_ON_DATETIME(Field<String> login, Field<String> pass, Field<Timestamp> tdatetime) {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntlOnDatetime.GET_CNTL_ON_DATETIME.call(login, pass, tdatetime);
+    }
+
+    /**
+     * The table <code>GET_CNTL_ON_DATETIME_2</code>.
+     */
+    public static final GetCntlOnDatetime_2 GET_CNTL_ON_DATETIME_2 = ru.smartsarov.citylighting.sprut.tables.GetCntlOnDatetime_2.GET_CNTL_ON_DATETIME_2;
+
+    /**
+     * Call <code>GET_CNTL_ON_DATETIME_2</code>.
+     */
+    public static Result<GetCntlOnDatetime_2Record> GET_CNTL_ON_DATETIME_2(Configuration configuration, String login, String pass, String cntList, Timestamp tdatetime) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntlOnDatetime_2.GET_CNTL_ON_DATETIME_2.call(login, pass, cntList, tdatetime)).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTL_ON_DATETIME_2</code> as a table.
+     */
+    public static GetCntlOnDatetime_2 GET_CNTL_ON_DATETIME_2(String login, String pass, String cntList, Timestamp tdatetime) {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntlOnDatetime_2.GET_CNTL_ON_DATETIME_2.call(login, pass, cntList, tdatetime);
+    }
+
+    /**
+     * Get <code>GET_CNTL_ON_DATETIME_2</code> as a table.
+     */
+    public static GetCntlOnDatetime_2 GET_CNTL_ON_DATETIME_2(Field<String> login, Field<String> pass, Field<String> cntList, Field<Timestamp> tdatetime) {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntlOnDatetime_2.GET_CNTL_ON_DATETIME_2.call(login, pass, cntList, tdatetime);
+    }
+
+    /**
+     * The table <code>GET_CNTTARCH</code>.
+     */
+    public static final GetCnttarch GET_CNTTARCH = ru.smartsarov.citylighting.sprut.tables.GetCnttarch.GET_CNTTARCH;
+
+    /**
+     * Call <code>GET_CNTTARCH</code>.
+     */
+    public static Result<GetCnttarchRecord> GET_CNTTARCH(Configuration configuration, String login, String pass, Integer cid, Integer tsn, Date fromDate, Date toDate, Integer archType) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCnttarch.GET_CNTTARCH.call(login, pass, cid, tsn, fromDate, toDate, archType)).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTTARCH</code> as a table.
+     */
+    public static GetCnttarch GET_CNTTARCH(String login, String pass, Integer cid, Integer tsn, Date fromDate, Date toDate, Integer archType) {
+        return ru.smartsarov.citylighting.sprut.tables.GetCnttarch.GET_CNTTARCH.call(login, pass, cid, tsn, fromDate, toDate, archType);
+    }
+
+    /**
+     * Get <code>GET_CNTTARCH</code> as a table.
+     */
+    public static GetCnttarch GET_CNTTARCH(Field<String> login, Field<String> pass, Field<Integer> cid, Field<Integer> tsn, Field<Date> fromDate, Field<Date> toDate, Field<Integer> archType) {
+        return ru.smartsarov.citylighting.sprut.tables.GetCnttarch.GET_CNTTARCH.call(login, pass, cid, tsn, fromDate, toDate, archType);
+    }
+
+    /**
+     * The table <code>GET_CNTTCURR</code>.
+     */
+    public static final GetCnttcurr GET_CNTTCURR = ru.smartsarov.citylighting.sprut.tables.GetCnttcurr.GET_CNTTCURR;
+
+    /**
+     * Call <code>GET_CNTTCURR</code>.
+     */
+    public static Result<GetCnttcurrRecord> GET_CNTTCURR(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCnttcurr.GET_CNTTCURR.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTTCURR</code> as a table.
+     */
+    public static GetCnttcurr GET_CNTTCURR() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCnttcurr.GET_CNTTCURR.call();
+    }
+
+    /**
+     * The table <code>GET_CNTTCURR_LOOK</code>.
+     */
+    public static final GetCnttcurrLook GET_CNTTCURR_LOOK = ru.smartsarov.citylighting.sprut.tables.GetCnttcurrLook.GET_CNTTCURR_LOOK;
+
+    /**
+     * Call <code>GET_CNTTCURR_LOOK</code>.
+     */
+    public static Result<GetCnttcurrLookRecord> GET_CNTTCURR_LOOK(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCnttcurrLook.GET_CNTTCURR_LOOK.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTTCURR_LOOK</code> as a table.
+     */
+    public static GetCnttcurrLook GET_CNTTCURR_LOOK() {
+        return ru.smartsarov.citylighting.sprut.tables.GetCnttcurrLook.GET_CNTTCURR_LOOK.call();
+    }
+
+    /**
+     * The table <code>GET_CNTTCURR_NEW</code>.
+     */
+    public static final GetCnttcurrNew GET_CNTTCURR_NEW = ru.smartsarov.citylighting.sprut.tables.GetCnttcurrNew.GET_CNTTCURR_NEW;
+
+    /**
+     * Call <code>GET_CNTTCURR_NEW</code>.
+     */
+    public static Result<GetCnttcurrNewRecord> GET_CNTTCURR_NEW(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCnttcurrNew.GET_CNTTCURR_NEW.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNTTCURR_NEW</code> as a table.
+     */
+    public static GetCnttcurrNew GET_CNTTCURR_NEW(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetCnttcurrNew.GET_CNTTCURR_NEW.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_CNTTCURR_NEW</code> as a table.
+     */
+    public static GetCnttcurrNew GET_CNTTCURR_NEW(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetCnttcurrNew.GET_CNTTCURR_NEW.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_CNT_CHANNEL</code>.
+     */
+    public static final GetCntChannel GET_CNT_CHANNEL = ru.smartsarov.citylighting.sprut.tables.GetCntChannel.GET_CNT_CHANNEL;
+
+    /**
+     * Call <code>GET_CNT_CHANNEL</code>.
+     */
+    public static Result<GetCntChannelRecord> GET_CNT_CHANNEL(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntChannel.GET_CNT_CHANNEL.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNT_CHANNEL</code> as a table.
+     */
+    public static GetCntChannel GET_CNT_CHANNEL(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntChannel.GET_CNT_CHANNEL.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_CNT_CHANNEL</code> as a table.
+     */
+    public static GetCntChannel GET_CNT_CHANNEL(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntChannel.GET_CNT_CHANNEL.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_CNT_CONTROL</code>.
+     */
+    public static final GetCntControl GET_CNT_CONTROL = ru.smartsarov.citylighting.sprut.tables.GetCntControl.GET_CNT_CONTROL;
+
+    /**
+     * Call <code>GET_CNT_CONTROL</code>.
+     */
+    public static Result<GetCntControlRecord> GET_CNT_CONTROL(Configuration configuration, Integer cntid, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntControl.GET_CNT_CONTROL.call(cntid, login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNT_CONTROL</code> as a table.
+     */
+    public static GetCntControl GET_CNT_CONTROL(Integer cntid, String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntControl.GET_CNT_CONTROL.call(cntid, login, pass);
+    }
+
+    /**
+     * Get <code>GET_CNT_CONTROL</code> as a table.
+     */
+    public static GetCntControl GET_CNT_CONTROL(Field<Integer> cntid, Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntControl.GET_CNT_CONTROL.call(cntid, login, pass);
+    }
+
+    /**
+     * The table <code>GET_CNT_MODBUS_REGISTERS</code>.
+     */
+    public static final GetCntModbusRegisters GET_CNT_MODBUS_REGISTERS = ru.smartsarov.citylighting.sprut.tables.GetCntModbusRegisters.GET_CNT_MODBUS_REGISTERS;
+
+    /**
+     * Call <code>GET_CNT_MODBUS_REGISTERS</code>.
+     */
+    public static Result<GetCntModbusRegistersRecord> GET_CNT_MODBUS_REGISTERS(Configuration configuration, String login, String pass, Integer inCntId) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetCntModbusRegisters.GET_CNT_MODBUS_REGISTERS.call(login, pass, inCntId)).fetch();
+    }
+
+    /**
+     * Get <code>GET_CNT_MODBUS_REGISTERS</code> as a table.
+     */
+    public static GetCntModbusRegisters GET_CNT_MODBUS_REGISTERS(String login, String pass, Integer inCntId) {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntModbusRegisters.GET_CNT_MODBUS_REGISTERS.call(login, pass, inCntId);
+    }
+
+    /**
+     * Get <code>GET_CNT_MODBUS_REGISTERS</code> as a table.
+     */
+    public static GetCntModbusRegisters GET_CNT_MODBUS_REGISTERS(Field<String> login, Field<String> pass, Field<Integer> inCntId) {
+        return ru.smartsarov.citylighting.sprut.tables.GetCntModbusRegisters.GET_CNT_MODBUS_REGISTERS.call(login, pass, inCntId);
+    }
+
+    /**
+     * The table <code>GET_CONTROL_STATE</code>.
+     */
+    public static final GetControlState GET_CONTROL_STATE = ru.smartsarov.citylighting.sprut.tables.GetControlState.GET_CONTROL_STATE;
+
+    /**
+     * Call <code>GET_CONTROL_STATE</code>.
+     */
+    public static Result<GetControlStateRecord> GET_CONTROL_STATE(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetControlState.GET_CONTROL_STATE.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_CONTROL_STATE</code> as a table.
+     */
+    public static GetControlState GET_CONTROL_STATE(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetControlState.GET_CONTROL_STATE.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_CONTROL_STATE</code> as a table.
+     */
+    public static GetControlState GET_CONTROL_STATE(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetControlState.GET_CONTROL_STATE.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_GPRS_CURR</code>.
+     */
+    public static final GetGprsCurr GET_GPRS_CURR = ru.smartsarov.citylighting.sprut.tables.GetGprsCurr.GET_GPRS_CURR;
+
+    /**
+     * Call <code>GET_GPRS_CURR</code>.
+     */
+    public static Result<GetGprsCurrRecord> GET_GPRS_CURR(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetGprsCurr.GET_GPRS_CURR.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_GPRS_CURR</code> as a table.
+     */
+    public static GetGprsCurr GET_GPRS_CURR(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGprsCurr.GET_GPRS_CURR.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_GPRS_CURR</code> as a table.
+     */
+    public static GetGprsCurr GET_GPRS_CURR(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGprsCurr.GET_GPRS_CURR.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_GPRS_TRAFFIC</code>.
+     */
+    public static final GetGprsTraffic GET_GPRS_TRAFFIC = ru.smartsarov.citylighting.sprut.tables.GetGprsTraffic.GET_GPRS_TRAFFIC;
+
+    /**
+     * Call <code>GET_GPRS_TRAFFIC</code>.
+     */
+    public static Result<GetGprsTrafficRecord> GET_GPRS_TRAFFIC(Configuration configuration, Integer uid, Date sdate, Date edate, Integer byDay) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetGprsTraffic.GET_GPRS_TRAFFIC.call(uid, sdate, edate, byDay)).fetch();
+    }
+
+    /**
+     * Get <code>GET_GPRS_TRAFFIC</code> as a table.
+     */
+    public static GetGprsTraffic GET_GPRS_TRAFFIC(Integer uid, Date sdate, Date edate, Integer byDay) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGprsTraffic.GET_GPRS_TRAFFIC.call(uid, sdate, edate, byDay);
+    }
+
+    /**
+     * Get <code>GET_GPRS_TRAFFIC</code> as a table.
+     */
+    public static GetGprsTraffic GET_GPRS_TRAFFIC(Field<Integer> uid, Field<Date> sdate, Field<Date> edate, Field<Integer> byDay) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGprsTraffic.GET_GPRS_TRAFFIC.call(uid, sdate, edate, byDay);
+    }
+
+    /**
+     * The table <code>GET_GRP_TYPE</code>.
+     */
+    public static final GetGrpType GET_GRP_TYPE = ru.smartsarov.citylighting.sprut.tables.GetGrpType.GET_GRP_TYPE;
+
+    /**
+     * Call <code>GET_GRP_TYPE</code>.
+     */
+    public static Result<GetGrpTypeRecord> GET_GRP_TYPE(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetGrpType.GET_GRP_TYPE.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_GRP_TYPE</code> as a table.
+     */
+    public static GetGrpType GET_GRP_TYPE() {
+        return ru.smartsarov.citylighting.sprut.tables.GetGrpType.GET_GRP_TYPE.call();
+    }
+
+    /**
+     * The table <code>GET_GUARD_LINE_CURR</code>.
+     */
+    public static final GetGuardLineCurr GET_GUARD_LINE_CURR = ru.smartsarov.citylighting.sprut.tables.GetGuardLineCurr.GET_GUARD_LINE_CURR;
+
+    /**
+     * Call <code>GET_GUARD_LINE_CURR</code>.
+     */
+    public static Result<GetGuardLineCurrRecord> GET_GUARD_LINE_CURR(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetGuardLineCurr.GET_GUARD_LINE_CURR.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_GUARD_LINE_CURR</code> as a table.
+     */
+    public static GetGuardLineCurr GET_GUARD_LINE_CURR(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardLineCurr.GET_GUARD_LINE_CURR.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_GUARD_LINE_CURR</code> as a table.
+     */
+    public static GetGuardLineCurr GET_GUARD_LINE_CURR(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardLineCurr.GET_GUARD_LINE_CURR.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_GUARD_LINE_LOG</code>.
+     */
+    public static final GetGuardLineLog GET_GUARD_LINE_LOG = ru.smartsarov.citylighting.sprut.tables.GetGuardLineLog.GET_GUARD_LINE_LOG;
+
+    /**
+     * Call <code>GET_GUARD_LINE_LOG</code>.
+     */
+    public static Result<GetGuardLineLogRecord> GET_GUARD_LINE_LOG(Configuration configuration, String login, String pass, Date fromDate, Date toDate) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetGuardLineLog.GET_GUARD_LINE_LOG.call(login, pass, fromDate, toDate)).fetch();
+    }
+
+    /**
+     * Get <code>GET_GUARD_LINE_LOG</code> as a table.
+     */
+    public static GetGuardLineLog GET_GUARD_LINE_LOG(String login, String pass, Date fromDate, Date toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardLineLog.GET_GUARD_LINE_LOG.call(login, pass, fromDate, toDate);
+    }
+
+    /**
+     * Get <code>GET_GUARD_LINE_LOG</code> as a table.
+     */
+    public static GetGuardLineLog GET_GUARD_LINE_LOG(Field<String> login, Field<String> pass, Field<Date> fromDate, Field<Date> toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardLineLog.GET_GUARD_LINE_LOG.call(login, pass, fromDate, toDate);
+    }
+
+    /**
+     * The table <code>GET_GUARD_LOG_MONTH</code>.
+     */
+    public static final GetGuardLogMonth GET_GUARD_LOG_MONTH = ru.smartsarov.citylighting.sprut.tables.GetGuardLogMonth.GET_GUARD_LOG_MONTH;
+
+    /**
+     * Call <code>GET_GUARD_LOG_MONTH</code>.
+     */
+    public static Result<GetGuardLogMonthRecord> GET_GUARD_LOG_MONTH(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetGuardLogMonth.GET_GUARD_LOG_MONTH.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_GUARD_LOG_MONTH</code> as a table.
+     */
+    public static GetGuardLogMonth GET_GUARD_LOG_MONTH() {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardLogMonth.GET_GUARD_LOG_MONTH.call();
+    }
+
+    /**
+     * The table <code>GET_GUARD_PIN_CURR</code>.
+     */
+    public static final GetGuardPinCurr GET_GUARD_PIN_CURR = ru.smartsarov.citylighting.sprut.tables.GetGuardPinCurr.GET_GUARD_PIN_CURR;
+
+    /**
+     * Call <code>GET_GUARD_PIN_CURR</code>.
+     */
+    public static Result<GetGuardPinCurrRecord> GET_GUARD_PIN_CURR(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetGuardPinCurr.GET_GUARD_PIN_CURR.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_GUARD_PIN_CURR</code> as a table.
+     */
+    public static GetGuardPinCurr GET_GUARD_PIN_CURR(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardPinCurr.GET_GUARD_PIN_CURR.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_GUARD_PIN_CURR</code> as a table.
+     */
+    public static GetGuardPinCurr GET_GUARD_PIN_CURR(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardPinCurr.GET_GUARD_PIN_CURR.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_GUARD_PIN_CURR_2</code>.
+     */
+    public static final GetGuardPinCurr_2 GET_GUARD_PIN_CURR_2 = ru.smartsarov.citylighting.sprut.tables.GetGuardPinCurr_2.GET_GUARD_PIN_CURR_2;
+
+    /**
+     * Call <code>GET_GUARD_PIN_CURR_2</code>.
+     */
+    public static Result<GetGuardPinCurr_2Record> GET_GUARD_PIN_CURR_2(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetGuardPinCurr_2.GET_GUARD_PIN_CURR_2.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_GUARD_PIN_CURR_2</code> as a table.
+     */
+    public static GetGuardPinCurr_2 GET_GUARD_PIN_CURR_2(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardPinCurr_2.GET_GUARD_PIN_CURR_2.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_GUARD_PIN_CURR_2</code> as a table.
+     */
+    public static GetGuardPinCurr_2 GET_GUARD_PIN_CURR_2(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardPinCurr_2.GET_GUARD_PIN_CURR_2.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_GUARD_PIN_CURR_ON</code>.
+     */
+    public static final GetGuardPinCurrOn GET_GUARD_PIN_CURR_ON = ru.smartsarov.citylighting.sprut.tables.GetGuardPinCurrOn.GET_GUARD_PIN_CURR_ON;
+
+    /**
+     * Call <code>GET_GUARD_PIN_CURR_ON</code>.
+     */
+    public static Result<GetGuardPinCurrOnRecord> GET_GUARD_PIN_CURR_ON(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetGuardPinCurrOn.GET_GUARD_PIN_CURR_ON.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_GUARD_PIN_CURR_ON</code> as a table.
+     */
+    public static GetGuardPinCurrOn GET_GUARD_PIN_CURR_ON(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardPinCurrOn.GET_GUARD_PIN_CURR_ON.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_GUARD_PIN_CURR_ON</code> as a table.
+     */
+    public static GetGuardPinCurrOn GET_GUARD_PIN_CURR_ON(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardPinCurrOn.GET_GUARD_PIN_CURR_ON.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_GUARD_PIN_LAST_EVENT_ALL</code>.
+     */
+    public static final GetGuardPinLastEventAll GET_GUARD_PIN_LAST_EVENT_ALL = ru.smartsarov.citylighting.sprut.tables.GetGuardPinLastEventAll.GET_GUARD_PIN_LAST_EVENT_ALL;
+
+    /**
+     * Call <code>GET_GUARD_PIN_LAST_EVENT_ALL</code>.
+     */
+    public static Result<GetGuardPinLastEventAllRecord> GET_GUARD_PIN_LAST_EVENT_ALL(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetGuardPinLastEventAll.GET_GUARD_PIN_LAST_EVENT_ALL.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_GUARD_PIN_LAST_EVENT_ALL</code> as a table.
+     */
+    public static GetGuardPinLastEventAll GET_GUARD_PIN_LAST_EVENT_ALL(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardPinLastEventAll.GET_GUARD_PIN_LAST_EVENT_ALL.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_GUARD_PIN_LAST_EVENT_ALL</code> as a table.
+     */
+    public static GetGuardPinLastEventAll GET_GUARD_PIN_LAST_EVENT_ALL(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardPinLastEventAll.GET_GUARD_PIN_LAST_EVENT_ALL.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_GUARD_PIN_LAST_EVENT_ALLZ</code>.
+     */
+    public static final GetGuardPinLastEventAllz GET_GUARD_PIN_LAST_EVENT_ALLZ = ru.smartsarov.citylighting.sprut.tables.GetGuardPinLastEventAllz.GET_GUARD_PIN_LAST_EVENT_ALLZ;
+
+    /**
+     * Call <code>GET_GUARD_PIN_LAST_EVENT_ALLZ</code>.
+     */
+    public static Result<GetGuardPinLastEventAllzRecord> GET_GUARD_PIN_LAST_EVENT_ALLZ(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetGuardPinLastEventAllz.GET_GUARD_PIN_LAST_EVENT_ALLZ.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_GUARD_PIN_LAST_EVENT_ALLZ</code> as a table.
+     */
+    public static GetGuardPinLastEventAllz GET_GUARD_PIN_LAST_EVENT_ALLZ(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardPinLastEventAllz.GET_GUARD_PIN_LAST_EVENT_ALLZ.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_GUARD_PIN_LAST_EVENT_ALLZ</code> as a table.
+     */
+    public static GetGuardPinLastEventAllz GET_GUARD_PIN_LAST_EVENT_ALLZ(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardPinLastEventAllz.GET_GUARD_PIN_LAST_EVENT_ALLZ.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_GUARD_PIN_LOG_LAST_EVENT</code>.
+     */
+    public static final GetGuardPinLogLastEvent GET_GUARD_PIN_LOG_LAST_EVENT = ru.smartsarov.citylighting.sprut.tables.GetGuardPinLogLastEvent.GET_GUARD_PIN_LOG_LAST_EVENT;
+
+    /**
+     * Call <code>GET_GUARD_PIN_LOG_LAST_EVENT</code>.
+     */
+    public static Result<GetGuardPinLogLastEventRecord> GET_GUARD_PIN_LOG_LAST_EVENT(Configuration configuration, String login, String pass, Integer guskAction) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetGuardPinLogLastEvent.GET_GUARD_PIN_LOG_LAST_EVENT.call(login, pass, guskAction)).fetch();
+    }
+
+    /**
+     * Get <code>GET_GUARD_PIN_LOG_LAST_EVENT</code> as a table.
+     */
+    public static GetGuardPinLogLastEvent GET_GUARD_PIN_LOG_LAST_EVENT(String login, String pass, Integer guskAction) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardPinLogLastEvent.GET_GUARD_PIN_LOG_LAST_EVENT.call(login, pass, guskAction);
+    }
+
+    /**
+     * Get <code>GET_GUARD_PIN_LOG_LAST_EVENT</code> as a table.
+     */
+    public static GetGuardPinLogLastEvent GET_GUARD_PIN_LOG_LAST_EVENT(Field<String> login, Field<String> pass, Field<Integer> guskAction) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardPinLogLastEvent.GET_GUARD_PIN_LOG_LAST_EVENT.call(login, pass, guskAction);
+    }
+
+    /**
+     * The table <code>GET_GUARD_PIN_LOG_SELECT</code>.
+     */
+    public static final GetGuardPinLogSelect GET_GUARD_PIN_LOG_SELECT = ru.smartsarov.citylighting.sprut.tables.GetGuardPinLogSelect.GET_GUARD_PIN_LOG_SELECT;
+
+    /**
+     * Call <code>GET_GUARD_PIN_LOG_SELECT</code>.
+     */
+    public static Result<GetGuardPinLogSelectRecord> GET_GUARD_PIN_LOG_SELECT(Configuration configuration, String login, String pass, Timestamp datetimeStart, Timestamp datetimeEnd) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetGuardPinLogSelect.GET_GUARD_PIN_LOG_SELECT.call(login, pass, datetimeStart, datetimeEnd)).fetch();
+    }
+
+    /**
+     * Get <code>GET_GUARD_PIN_LOG_SELECT</code> as a table.
+     */
+    public static GetGuardPinLogSelect GET_GUARD_PIN_LOG_SELECT(String login, String pass, Timestamp datetimeStart, Timestamp datetimeEnd) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardPinLogSelect.GET_GUARD_PIN_LOG_SELECT.call(login, pass, datetimeStart, datetimeEnd);
+    }
+
+    /**
+     * Get <code>GET_GUARD_PIN_LOG_SELECT</code> as a table.
+     */
+    public static GetGuardPinLogSelect GET_GUARD_PIN_LOG_SELECT(Field<String> login, Field<String> pass, Field<Timestamp> datetimeStart, Field<Timestamp> datetimeEnd) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardPinLogSelect.GET_GUARD_PIN_LOG_SELECT.call(login, pass, datetimeStart, datetimeEnd);
+    }
+
+    /**
+     * The table <code>GET_GUARD_PIN_LOG_SELECT_1</code>.
+     */
+    public static final GetGuardPinLogSelect_1 GET_GUARD_PIN_LOG_SELECT_1 = ru.smartsarov.citylighting.sprut.tables.GetGuardPinLogSelect_1.GET_GUARD_PIN_LOG_SELECT_1;
+
+    /**
+     * Call <code>GET_GUARD_PIN_LOG_SELECT_1</code>.
+     */
+    public static Result<GetGuardPinLogSelect_1Record> GET_GUARD_PIN_LOG_SELECT_1(Configuration configuration, String login, String pass, Integer uskId, Timestamp datetimeStart, Timestamp datetimeEnd) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetGuardPinLogSelect_1.GET_GUARD_PIN_LOG_SELECT_1.call(login, pass, uskId, datetimeStart, datetimeEnd)).fetch();
+    }
+
+    /**
+     * Get <code>GET_GUARD_PIN_LOG_SELECT_1</code> as a table.
+     */
+    public static GetGuardPinLogSelect_1 GET_GUARD_PIN_LOG_SELECT_1(String login, String pass, Integer uskId, Timestamp datetimeStart, Timestamp datetimeEnd) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardPinLogSelect_1.GET_GUARD_PIN_LOG_SELECT_1.call(login, pass, uskId, datetimeStart, datetimeEnd);
+    }
+
+    /**
+     * Get <code>GET_GUARD_PIN_LOG_SELECT_1</code> as a table.
+     */
+    public static GetGuardPinLogSelect_1 GET_GUARD_PIN_LOG_SELECT_1(Field<String> login, Field<String> pass, Field<Integer> uskId, Field<Timestamp> datetimeStart, Field<Timestamp> datetimeEnd) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardPinLogSelect_1.GET_GUARD_PIN_LOG_SELECT_1.call(login, pass, uskId, datetimeStart, datetimeEnd);
+    }
+
+    /**
+     * The table <code>GET_GUARD_USK_LOG</code>.
+     */
+    public static final GetGuardUskLog GET_GUARD_USK_LOG = ru.smartsarov.citylighting.sprut.tables.GetGuardUskLog.GET_GUARD_USK_LOG;
+
+    /**
+     * Call <code>GET_GUARD_USK_LOG</code>.
+     */
+    public static Result<GetGuardUskLogRecord> GET_GUARD_USK_LOG(Configuration configuration, String login, String pass, Integer uid, Date fromDate, Date toDate) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetGuardUskLog.GET_GUARD_USK_LOG.call(login, pass, uid, fromDate, toDate)).fetch();
+    }
+
+    /**
+     * Get <code>GET_GUARD_USK_LOG</code> as a table.
+     */
+    public static GetGuardUskLog GET_GUARD_USK_LOG(String login, String pass, Integer uid, Date fromDate, Date toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardUskLog.GET_GUARD_USK_LOG.call(login, pass, uid, fromDate, toDate);
+    }
+
+    /**
+     * Get <code>GET_GUARD_USK_LOG</code> as a table.
+     */
+    public static GetGuardUskLog GET_GUARD_USK_LOG(Field<String> login, Field<String> pass, Field<Integer> uid, Field<Date> fromDate, Field<Date> toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardUskLog.GET_GUARD_USK_LOG.call(login, pass, uid, fromDate, toDate);
+    }
+
+    /**
+     * The table <code>GET_GUARD_ZONE_LOG</code>.
+     */
+    public static final GetGuardZoneLog GET_GUARD_ZONE_LOG = ru.smartsarov.citylighting.sprut.tables.GetGuardZoneLog.GET_GUARD_ZONE_LOG;
+
+    /**
+     * Call <code>GET_GUARD_ZONE_LOG</code>.
+     */
+    public static Result<GetGuardZoneLogRecord> GET_GUARD_ZONE_LOG(Configuration configuration, String login, String pass, Integer zid, Date fromDate, Date toDate) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetGuardZoneLog.GET_GUARD_ZONE_LOG.call(login, pass, zid, fromDate, toDate)).fetch();
+    }
+
+    /**
+     * Get <code>GET_GUARD_ZONE_LOG</code> as a table.
+     */
+    public static GetGuardZoneLog GET_GUARD_ZONE_LOG(String login, String pass, Integer zid, Date fromDate, Date toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardZoneLog.GET_GUARD_ZONE_LOG.call(login, pass, zid, fromDate, toDate);
+    }
+
+    /**
+     * Get <code>GET_GUARD_ZONE_LOG</code> as a table.
+     */
+    public static GetGuardZoneLog GET_GUARD_ZONE_LOG(Field<String> login, Field<String> pass, Field<Integer> zid, Field<Date> fromDate, Field<Date> toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetGuardZoneLog.GET_GUARD_ZONE_LOG.call(login, pass, zid, fromDate, toDate);
+    }
+
+    /**
+     * The table <code>GET_ICNTDL</code>.
+     */
+    public static final GetIcntdl GET_ICNTDL = ru.smartsarov.citylighting.sprut.tables.GetIcntdl.GET_ICNTDL;
+
+    /**
+     * Call <code>GET_ICNTDL</code>.
+     */
+    public static Result<GetIcntdlRecord> GET_ICNTDL(Configuration configuration, Integer cid, Timestamp sdate, Timestamp edate) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetIcntdl.GET_ICNTDL.call(cid, sdate, edate)).fetch();
+    }
+
+    /**
+     * Get <code>GET_ICNTDL</code> as a table.
+     */
+    public static GetIcntdl GET_ICNTDL(Integer cid, Timestamp sdate, Timestamp edate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetIcntdl.GET_ICNTDL.call(cid, sdate, edate);
+    }
+
+    /**
+     * Get <code>GET_ICNTDL</code> as a table.
+     */
+    public static GetIcntdl GET_ICNTDL(Field<Integer> cid, Field<Timestamp> sdate, Field<Timestamp> edate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetIcntdl.GET_ICNTDL.call(cid, sdate, edate);
+    }
+
+    /**
+     * The table <code>GET_ICNTHDL</code>.
+     */
+    public static final GetIcnthdl GET_ICNTHDL = ru.smartsarov.citylighting.sprut.tables.GetIcnthdl.GET_ICNTHDL;
+
+    /**
+     * Call <code>GET_ICNTHDL</code>.
+     */
+    public static Result<GetIcnthdlRecord> GET_ICNTHDL(Configuration configuration, Integer cid, Timestamp sdate, Timestamp edate) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetIcnthdl.GET_ICNTHDL.call(cid, sdate, edate)).fetch();
+    }
+
+    /**
+     * Get <code>GET_ICNTHDL</code> as a table.
+     */
+    public static GetIcnthdl GET_ICNTHDL(Integer cid, Timestamp sdate, Timestamp edate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetIcnthdl.GET_ICNTHDL.call(cid, sdate, edate);
+    }
+
+    /**
+     * Get <code>GET_ICNTHDL</code> as a table.
+     */
+    public static GetIcnthdl GET_ICNTHDL(Field<Integer> cid, Field<Timestamp> sdate, Field<Timestamp> edate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetIcnthdl.GET_ICNTHDL.call(cid, sdate, edate);
+    }
+
+    /**
+     * The table <code>GET_ICNTHL</code>.
+     */
+    public static final GetIcnthl GET_ICNTHL = ru.smartsarov.citylighting.sprut.tables.GetIcnthl.GET_ICNTHL;
+
+    /**
+     * Call <code>GET_ICNTHL</code>.
+     */
+    public static Result<GetIcnthlRecord> GET_ICNTHL(Configuration configuration, Integer cid, Timestamp fdate) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetIcnthl.GET_ICNTHL.call(cid, fdate)).fetch();
+    }
+
+    /**
+     * Get <code>GET_ICNTHL</code> as a table.
+     */
+    public static GetIcnthl GET_ICNTHL(Integer cid, Timestamp fdate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetIcnthl.GET_ICNTHL.call(cid, fdate);
+    }
+
+    /**
+     * Get <code>GET_ICNTHL</code> as a table.
+     */
+    public static GetIcnthl GET_ICNTHL(Field<Integer> cid, Field<Timestamp> fdate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetIcnthl.GET_ICNTHL.call(cid, fdate);
+    }
+
+    /**
+     * The table <code>GET_IMPULSE_ARCH_COLD_WATER</code>.
+     */
+    public static final GetImpulseArchColdWater GET_IMPULSE_ARCH_COLD_WATER = ru.smartsarov.citylighting.sprut.tables.GetImpulseArchColdWater.GET_IMPULSE_ARCH_COLD_WATER;
+
+    /**
+     * Call <code>GET_IMPULSE_ARCH_COLD_WATER</code>.
+     */
+    public static Result<GetImpulseArchColdWaterRecord> GET_IMPULSE_ARCH_COLD_WATER(Configuration configuration, String login, String pass, Integer cid, Timestamp fromDate, Timestamp toDate) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetImpulseArchColdWater.GET_IMPULSE_ARCH_COLD_WATER.call(login, pass, cid, fromDate, toDate)).fetch();
+    }
+
+    /**
+     * Get <code>GET_IMPULSE_ARCH_COLD_WATER</code> as a table.
+     */
+    public static GetImpulseArchColdWater GET_IMPULSE_ARCH_COLD_WATER(String login, String pass, Integer cid, Timestamp fromDate, Timestamp toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetImpulseArchColdWater.GET_IMPULSE_ARCH_COLD_WATER.call(login, pass, cid, fromDate, toDate);
+    }
+
+    /**
+     * Get <code>GET_IMPULSE_ARCH_COLD_WATER</code> as a table.
+     */
+    public static GetImpulseArchColdWater GET_IMPULSE_ARCH_COLD_WATER(Field<String> login, Field<String> pass, Field<Integer> cid, Field<Timestamp> fromDate, Field<Timestamp> toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetImpulseArchColdWater.GET_IMPULSE_ARCH_COLD_WATER.call(login, pass, cid, fromDate, toDate);
+    }
+
+    /**
+     * The table <code>GET_IMPULSE_ARCH_ELECTRO</code>.
+     */
+    public static final GetImpulseArchElectro GET_IMPULSE_ARCH_ELECTRO = ru.smartsarov.citylighting.sprut.tables.GetImpulseArchElectro.GET_IMPULSE_ARCH_ELECTRO;
+
+    /**
+     * Call <code>GET_IMPULSE_ARCH_ELECTRO</code>.
+     */
+    public static Result<GetImpulseArchElectroRecord> GET_IMPULSE_ARCH_ELECTRO(Configuration configuration, String login, String pass, Integer cid, Date fromDate, Date toDate) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetImpulseArchElectro.GET_IMPULSE_ARCH_ELECTRO.call(login, pass, cid, fromDate, toDate)).fetch();
+    }
+
+    /**
+     * Get <code>GET_IMPULSE_ARCH_ELECTRO</code> as a table.
+     */
+    public static GetImpulseArchElectro GET_IMPULSE_ARCH_ELECTRO(String login, String pass, Integer cid, Date fromDate, Date toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetImpulseArchElectro.GET_IMPULSE_ARCH_ELECTRO.call(login, pass, cid, fromDate, toDate);
+    }
+
+    /**
+     * Get <code>GET_IMPULSE_ARCH_ELECTRO</code> as a table.
+     */
+    public static GetImpulseArchElectro GET_IMPULSE_ARCH_ELECTRO(Field<String> login, Field<String> pass, Field<Integer> cid, Field<Date> fromDate, Field<Date> toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetImpulseArchElectro.GET_IMPULSE_ARCH_ELECTRO.call(login, pass, cid, fromDate, toDate);
+    }
+
+    /**
+     * The table <code>GET_IMPULSE_ARCH_HOT_WATER</code>.
+     */
+    public static final GetImpulseArchHotWater GET_IMPULSE_ARCH_HOT_WATER = ru.smartsarov.citylighting.sprut.tables.GetImpulseArchHotWater.GET_IMPULSE_ARCH_HOT_WATER;
+
+    /**
+     * Call <code>GET_IMPULSE_ARCH_HOT_WATER</code>.
+     */
+    public static Result<GetImpulseArchHotWaterRecord> GET_IMPULSE_ARCH_HOT_WATER(Configuration configuration, String login, String pass, Integer cid, Timestamp fromDate, Timestamp toDate) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetImpulseArchHotWater.GET_IMPULSE_ARCH_HOT_WATER.call(login, pass, cid, fromDate, toDate)).fetch();
+    }
+
+    /**
+     * Get <code>GET_IMPULSE_ARCH_HOT_WATER</code> as a table.
+     */
+    public static GetImpulseArchHotWater GET_IMPULSE_ARCH_HOT_WATER(String login, String pass, Integer cid, Timestamp fromDate, Timestamp toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetImpulseArchHotWater.GET_IMPULSE_ARCH_HOT_WATER.call(login, pass, cid, fromDate, toDate);
+    }
+
+    /**
+     * Get <code>GET_IMPULSE_ARCH_HOT_WATER</code> as a table.
+     */
+    public static GetImpulseArchHotWater GET_IMPULSE_ARCH_HOT_WATER(Field<String> login, Field<String> pass, Field<Integer> cid, Field<Timestamp> fromDate, Field<Timestamp> toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetImpulseArchHotWater.GET_IMPULSE_ARCH_HOT_WATER.call(login, pass, cid, fromDate, toDate);
+    }
+
+    /**
+     * The table <code>GET_IMPULSE_CNTV</code>.
+     */
+    public static final GetImpulseCntv GET_IMPULSE_CNTV = ru.smartsarov.citylighting.sprut.tables.GetImpulseCntv.GET_IMPULSE_CNTV;
+
+    /**
+     * Call <code>GET_IMPULSE_CNTV</code>.
+     */
+    public static Result<GetImpulseCntvRecord> GET_IMPULSE_CNTV(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetImpulseCntv.GET_IMPULSE_CNTV.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_IMPULSE_CNTV</code> as a table.
+     */
+    public static GetImpulseCntv GET_IMPULSE_CNTV(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetImpulseCntv.GET_IMPULSE_CNTV.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_IMPULSE_CNTV</code> as a table.
+     */
+    public static GetImpulseCntv GET_IMPULSE_CNTV(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetImpulseCntv.GET_IMPULSE_CNTV.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_IMPULSE_CNTV_COLD_WATER</code>.
+     */
+    public static final GetImpulseCntvColdWater GET_IMPULSE_CNTV_COLD_WATER = ru.smartsarov.citylighting.sprut.tables.GetImpulseCntvColdWater.GET_IMPULSE_CNTV_COLD_WATER;
+
+    /**
+     * Call <code>GET_IMPULSE_CNTV_COLD_WATER</code>.
+     */
+    public static Result<GetImpulseCntvColdWaterRecord> GET_IMPULSE_CNTV_COLD_WATER(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetImpulseCntvColdWater.GET_IMPULSE_CNTV_COLD_WATER.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_IMPULSE_CNTV_COLD_WATER</code> as a table.
+     */
+    public static GetImpulseCntvColdWater GET_IMPULSE_CNTV_COLD_WATER(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetImpulseCntvColdWater.GET_IMPULSE_CNTV_COLD_WATER.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_IMPULSE_CNTV_COLD_WATER</code> as a table.
+     */
+    public static GetImpulseCntvColdWater GET_IMPULSE_CNTV_COLD_WATER(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetImpulseCntvColdWater.GET_IMPULSE_CNTV_COLD_WATER.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_IMPULSE_CNTV_ELECTRO</code>.
+     */
+    public static final GetImpulseCntvElectro GET_IMPULSE_CNTV_ELECTRO = ru.smartsarov.citylighting.sprut.tables.GetImpulseCntvElectro.GET_IMPULSE_CNTV_ELECTRO;
+
+    /**
+     * Call <code>GET_IMPULSE_CNTV_ELECTRO</code>.
+     */
+    public static Result<GetImpulseCntvElectroRecord> GET_IMPULSE_CNTV_ELECTRO(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetImpulseCntvElectro.GET_IMPULSE_CNTV_ELECTRO.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_IMPULSE_CNTV_ELECTRO</code> as a table.
+     */
+    public static GetImpulseCntvElectro GET_IMPULSE_CNTV_ELECTRO(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetImpulseCntvElectro.GET_IMPULSE_CNTV_ELECTRO.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_IMPULSE_CNTV_ELECTRO</code> as a table.
+     */
+    public static GetImpulseCntvElectro GET_IMPULSE_CNTV_ELECTRO(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetImpulseCntvElectro.GET_IMPULSE_CNTV_ELECTRO.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_IMPULSE_CNTV_GAZ</code>.
+     */
+    public static final GetImpulseCntvGaz GET_IMPULSE_CNTV_GAZ = ru.smartsarov.citylighting.sprut.tables.GetImpulseCntvGaz.GET_IMPULSE_CNTV_GAZ;
+
+    /**
+     * Call <code>GET_IMPULSE_CNTV_GAZ</code>.
+     */
+    public static Result<GetImpulseCntvGazRecord> GET_IMPULSE_CNTV_GAZ(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetImpulseCntvGaz.GET_IMPULSE_CNTV_GAZ.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_IMPULSE_CNTV_GAZ</code> as a table.
+     */
+    public static GetImpulseCntvGaz GET_IMPULSE_CNTV_GAZ(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetImpulseCntvGaz.GET_IMPULSE_CNTV_GAZ.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_IMPULSE_CNTV_GAZ</code> as a table.
+     */
+    public static GetImpulseCntvGaz GET_IMPULSE_CNTV_GAZ(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetImpulseCntvGaz.GET_IMPULSE_CNTV_GAZ.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_IMPULSE_CNTV_HOT_WATER</code>.
+     */
+    public static final GetImpulseCntvHotWater GET_IMPULSE_CNTV_HOT_WATER = ru.smartsarov.citylighting.sprut.tables.GetImpulseCntvHotWater.GET_IMPULSE_CNTV_HOT_WATER;
+
+    /**
+     * Call <code>GET_IMPULSE_CNTV_HOT_WATER</code>.
+     */
+    public static Result<GetImpulseCntvHotWaterRecord> GET_IMPULSE_CNTV_HOT_WATER(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetImpulseCntvHotWater.GET_IMPULSE_CNTV_HOT_WATER.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_IMPULSE_CNTV_HOT_WATER</code> as a table.
+     */
+    public static GetImpulseCntvHotWater GET_IMPULSE_CNTV_HOT_WATER(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetImpulseCntvHotWater.GET_IMPULSE_CNTV_HOT_WATER.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_IMPULSE_CNTV_HOT_WATER</code> as a table.
+     */
+    public static GetImpulseCntvHotWater GET_IMPULSE_CNTV_HOT_WATER(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetImpulseCntvHotWater.GET_IMPULSE_CNTV_HOT_WATER.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_INTELLIGENT_ARCH_ELECTRO_15</code>.
+     */
+    public static final GetIntelligentArchElectro_15 GET_INTELLIGENT_ARCH_ELECTRO_15 = ru.smartsarov.citylighting.sprut.tables.GetIntelligentArchElectro_15.GET_INTELLIGENT_ARCH_ELECTRO_15;
+
+    /**
+     * Call <code>GET_INTELLIGENT_ARCH_ELECTRO_15</code>.
+     */
+    public static Result<GetIntelligentArchElectro_15Record> GET_INTELLIGENT_ARCH_ELECTRO_15(Configuration configuration, String login, String pass, Integer cid, Date fromDate, Date toDate) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetIntelligentArchElectro_15.GET_INTELLIGENT_ARCH_ELECTRO_15.call(login, pass, cid, fromDate, toDate)).fetch();
+    }
+
+    /**
+     * Get <code>GET_INTELLIGENT_ARCH_ELECTRO_15</code> as a table.
+     */
+    public static GetIntelligentArchElectro_15 GET_INTELLIGENT_ARCH_ELECTRO_15(String login, String pass, Integer cid, Date fromDate, Date toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetIntelligentArchElectro_15.GET_INTELLIGENT_ARCH_ELECTRO_15.call(login, pass, cid, fromDate, toDate);
+    }
+
+    /**
+     * Get <code>GET_INTELLIGENT_ARCH_ELECTRO_15</code> as a table.
+     */
+    public static GetIntelligentArchElectro_15 GET_INTELLIGENT_ARCH_ELECTRO_15(Field<String> login, Field<String> pass, Field<Integer> cid, Field<Date> fromDate, Field<Date> toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetIntelligentArchElectro_15.GET_INTELLIGENT_ARCH_ELECTRO_15.call(login, pass, cid, fromDate, toDate);
+    }
+
+    /**
+     * The table <code>GET_INTELLIGENT_ELECTRO</code>.
+     */
+    public static final GetIntelligentElectro GET_INTELLIGENT_ELECTRO = ru.smartsarov.citylighting.sprut.tables.GetIntelligentElectro.GET_INTELLIGENT_ELECTRO;
+
+    /**
+     * Call <code>GET_INTELLIGENT_ELECTRO</code>.
+     */
+    public static Result<GetIntelligentElectroRecord> GET_INTELLIGENT_ELECTRO(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetIntelligentElectro.GET_INTELLIGENT_ELECTRO.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_INTELLIGENT_ELECTRO</code> as a table.
+     */
+    public static GetIntelligentElectro GET_INTELLIGENT_ELECTRO(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetIntelligentElectro.GET_INTELLIGENT_ELECTRO.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_INTELLIGENT_ELECTRO</code> as a table.
+     */
+    public static GetIntelligentElectro GET_INTELLIGENT_ELECTRO(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetIntelligentElectro.GET_INTELLIGENT_ELECTRO.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_INTELLIGENT_ELECTRO_KOEFF</code>.
+     */
+    public static final GetIntelligentElectroKoeff GET_INTELLIGENT_ELECTRO_KOEFF = ru.smartsarov.citylighting.sprut.tables.GetIntelligentElectroKoeff.GET_INTELLIGENT_ELECTRO_KOEFF;
+
+    /**
+     * Call <code>GET_INTELLIGENT_ELECTRO_KOEFF</code>.
+     */
+    public static Result<GetIntelligentElectroKoeffRecord> GET_INTELLIGENT_ELECTRO_KOEFF(Configuration configuration, String login, String pass, Short useTransformationI, Short useTransformationU) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetIntelligentElectroKoeff.GET_INTELLIGENT_ELECTRO_KOEFF.call(login, pass, useTransformationI, useTransformationU)).fetch();
+    }
+
+    /**
+     * Get <code>GET_INTELLIGENT_ELECTRO_KOEFF</code> as a table.
+     */
+    public static GetIntelligentElectroKoeff GET_INTELLIGENT_ELECTRO_KOEFF(String login, String pass, Short useTransformationI, Short useTransformationU) {
+        return ru.smartsarov.citylighting.sprut.tables.GetIntelligentElectroKoeff.GET_INTELLIGENT_ELECTRO_KOEFF.call(login, pass, useTransformationI, useTransformationU);
+    }
+
+    /**
+     * Get <code>GET_INTELLIGENT_ELECTRO_KOEFF</code> as a table.
+     */
+    public static GetIntelligentElectroKoeff GET_INTELLIGENT_ELECTRO_KOEFF(Field<String> login, Field<String> pass, Field<Short> useTransformationI, Field<Short> useTransformationU) {
+        return ru.smartsarov.citylighting.sprut.tables.GetIntelligentElectroKoeff.GET_INTELLIGENT_ELECTRO_KOEFF.call(login, pass, useTransformationI, useTransformationU);
+    }
+
+    /**
+     * The table <code>GET_LED_CURR</code>.
+     */
+    public static final GetLedCurr GET_LED_CURR = ru.smartsarov.citylighting.sprut.tables.GetLedCurr.GET_LED_CURR;
+
+    /**
+     * Call <code>GET_LED_CURR</code>.
+     */
+    public static Result<GetLedCurrRecord> GET_LED_CURR(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetLedCurr.GET_LED_CURR.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_LED_CURR</code> as a table.
+     */
+    public static GetLedCurr GET_LED_CURR(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetLedCurr.GET_LED_CURR.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_LED_CURR</code> as a table.
+     */
+    public static GetLedCurr GET_LED_CURR(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetLedCurr.GET_LED_CURR.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_MRCLOG</code>.
+     */
+    public static final GetMrclog GET_MRCLOG = ru.smartsarov.citylighting.sprut.tables.GetMrclog.GET_MRCLOG;
+
+    /**
+     * Call <code>GET_MRCLOG</code>.
+     */
+    public static Result<GetMrclogRecord> GET_MRCLOG(Configuration configuration, Integer cid, Timestamp sdate, Timestamp edate) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetMrclog.GET_MRCLOG.call(cid, sdate, edate)).fetch();
+    }
+
+    /**
+     * Get <code>GET_MRCLOG</code> as a table.
+     */
+    public static GetMrclog GET_MRCLOG(Integer cid, Timestamp sdate, Timestamp edate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetMrclog.GET_MRCLOG.call(cid, sdate, edate);
+    }
+
+    /**
+     * Get <code>GET_MRCLOG</code> as a table.
+     */
+    public static GetMrclog GET_MRCLOG(Field<Integer> cid, Field<Timestamp> sdate, Field<Timestamp> edate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetMrclog.GET_MRCLOG.call(cid, sdate, edate);
+    }
+
+    /**
+     * The table <code>GET_MRCLOGLIST</code>.
+     */
+    public static final GetMrcloglist GET_MRCLOGLIST = ru.smartsarov.citylighting.sprut.tables.GetMrcloglist.GET_MRCLOGLIST;
+
+    /**
+     * Call <code>GET_MRCLOGLIST</code>.
+     */
+    public static Result<GetMrcloglistRecord> GET_MRCLOGLIST(Configuration configuration, Integer cid, Timestamp sdate, Timestamp edate) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetMrcloglist.GET_MRCLOGLIST.call(cid, sdate, edate)).fetch();
+    }
+
+    /**
+     * Get <code>GET_MRCLOGLIST</code> as a table.
+     */
+    public static GetMrcloglist GET_MRCLOGLIST(Integer cid, Timestamp sdate, Timestamp edate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetMrcloglist.GET_MRCLOGLIST.call(cid, sdate, edate);
+    }
+
+    /**
+     * Get <code>GET_MRCLOGLIST</code> as a table.
+     */
+    public static GetMrcloglist GET_MRCLOGLIST(Field<Integer> cid, Field<Timestamp> sdate, Field<Timestamp> edate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetMrcloglist.GET_MRCLOGLIST.call(cid, sdate, edate);
+    }
+
+    /**
+     * The table <code>GET_MRCPWRLOG</code>.
+     */
+    public static final GetMrcpwrlog GET_MRCPWRLOG = ru.smartsarov.citylighting.sprut.tables.GetMrcpwrlog.GET_MRCPWRLOG;
+
+    /**
+     * Call <code>GET_MRCPWRLOG</code>.
+     */
+    public static Result<GetMrcpwrlogRecord> GET_MRCPWRLOG(Configuration configuration, Integer cid, Timestamp sdate, Timestamp edate) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetMrcpwrlog.GET_MRCPWRLOG.call(cid, sdate, edate)).fetch();
+    }
+
+    /**
+     * Get <code>GET_MRCPWRLOG</code> as a table.
+     */
+    public static GetMrcpwrlog GET_MRCPWRLOG(Integer cid, Timestamp sdate, Timestamp edate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetMrcpwrlog.GET_MRCPWRLOG.call(cid, sdate, edate);
+    }
+
+    /**
+     * Get <code>GET_MRCPWRLOG</code> as a table.
+     */
+    public static GetMrcpwrlog GET_MRCPWRLOG(Field<Integer> cid, Field<Timestamp> sdate, Field<Timestamp> edate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetMrcpwrlog.GET_MRCPWRLOG.call(cid, sdate, edate);
+    }
+
+    /**
+     * The table <code>GET_OWENPR110_CURR</code>.
+     */
+    public static final GetOwenpr110Curr GET_OWENPR110_CURR = ru.smartsarov.citylighting.sprut.tables.GetOwenpr110Curr.GET_OWENPR110_CURR;
+
+    /**
+     * Call <code>GET_OWENPR110_CURR</code>.
+     */
+    public static Result<GetOwenpr110CurrRecord> GET_OWENPR110_CURR(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetOwenpr110Curr.GET_OWENPR110_CURR.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_OWENPR110_CURR</code> as a table.
+     */
+    public static GetOwenpr110Curr GET_OWENPR110_CURR(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetOwenpr110Curr.GET_OWENPR110_CURR.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_OWENPR110_CURR</code> as a table.
+     */
+    public static GetOwenpr110Curr GET_OWENPR110_CURR(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetOwenpr110Curr.GET_OWENPR110_CURR.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_PCS_ID</code>.
+     */
+    public static final GetPcsId GET_PCS_ID = ru.smartsarov.citylighting.sprut.tables.GetPcsId.GET_PCS_ID;
+
+    /**
+     * Call <code>GET_PCS_ID</code>.
+     */
+    public static Result<GetPcsIdRecord> GET_PCS_ID(Configuration configuration, Integer grdlgAbId, String grdlgIbutton) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetPcsId.GET_PCS_ID.call(grdlgAbId, grdlgIbutton)).fetch();
+    }
+
+    /**
+     * Get <code>GET_PCS_ID</code> as a table.
+     */
+    public static GetPcsId GET_PCS_ID(Integer grdlgAbId, String grdlgIbutton) {
+        return ru.smartsarov.citylighting.sprut.tables.GetPcsId.GET_PCS_ID.call(grdlgAbId, grdlgIbutton);
+    }
+
+    /**
+     * Get <code>GET_PCS_ID</code> as a table.
+     */
+    public static GetPcsId GET_PCS_ID(Field<Integer> grdlgAbId, Field<String> grdlgIbutton) {
+        return ru.smartsarov.citylighting.sprut.tables.GetPcsId.GET_PCS_ID.call(grdlgAbId, grdlgIbutton);
+    }
+
+    /**
+     * The table <code>GET_PKE_LOG</code>.
+     */
+    public static final GetPkeLog GET_PKE_LOG = ru.smartsarov.citylighting.sprut.tables.GetPkeLog.GET_PKE_LOG;
+
+    /**
+     * Call <code>GET_PKE_LOG</code>.
+     */
+    public static Result<GetPkeLogRecord> GET_PKE_LOG(Configuration configuration, Integer cid, Integer kind, Date sdate, Date edate) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetPkeLog.GET_PKE_LOG.call(cid, kind, sdate, edate)).fetch();
+    }
+
+    /**
+     * Get <code>GET_PKE_LOG</code> as a table.
+     */
+    public static GetPkeLog GET_PKE_LOG(Integer cid, Integer kind, Date sdate, Date edate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetPkeLog.GET_PKE_LOG.call(cid, kind, sdate, edate);
+    }
+
+    /**
+     * Get <code>GET_PKE_LOG</code> as a table.
+     */
+    public static GetPkeLog GET_PKE_LOG(Field<Integer> cid, Field<Integer> kind, Field<Date> sdate, Field<Date> edate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetPkeLog.GET_PKE_LOG.call(cid, kind, sdate, edate);
+    }
+
+    /**
+     * The table <code>GET_PKE_LOG_JOINED</code>.
+     */
+    public static final GetPkeLogJoined GET_PKE_LOG_JOINED = ru.smartsarov.citylighting.sprut.tables.GetPkeLogJoined.GET_PKE_LOG_JOINED;
+
+    /**
+     * Call <code>GET_PKE_LOG_JOINED</code>.
+     */
+    public static Result<GetPkeLogJoinedRecord> GET_PKE_LOG_JOINED(Configuration configuration, Integer cid, Integer kind, Date sdate, Date edate) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetPkeLogJoined.GET_PKE_LOG_JOINED.call(cid, kind, sdate, edate)).fetch();
+    }
+
+    /**
+     * Get <code>GET_PKE_LOG_JOINED</code> as a table.
+     */
+    public static GetPkeLogJoined GET_PKE_LOG_JOINED(Integer cid, Integer kind, Date sdate, Date edate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetPkeLogJoined.GET_PKE_LOG_JOINED.call(cid, kind, sdate, edate);
+    }
+
+    /**
+     * Get <code>GET_PKE_LOG_JOINED</code> as a table.
+     */
+    public static GetPkeLogJoined GET_PKE_LOG_JOINED(Field<Integer> cid, Field<Integer> kind, Field<Date> sdate, Field<Date> edate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetPkeLogJoined.GET_PKE_LOG_JOINED.call(cid, kind, sdate, edate);
+    }
+
+    /**
+     * The table <code>GET_PKE_SUMS</code>.
+     */
+    public static final GetPkeSums GET_PKE_SUMS = ru.smartsarov.citylighting.sprut.tables.GetPkeSums.GET_PKE_SUMS;
+
+    /**
+     * Call <code>GET_PKE_SUMS</code>.
+     */
+    public static Result<GetPkeSumsRecord> GET_PKE_SUMS(Configuration configuration, Integer cid, Integer phase, Date sdate, Date edate, Integer byDay) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetPkeSums.GET_PKE_SUMS.call(cid, phase, sdate, edate, byDay)).fetch();
+    }
+
+    /**
+     * Get <code>GET_PKE_SUMS</code> as a table.
+     */
+    public static GetPkeSums GET_PKE_SUMS(Integer cid, Integer phase, Date sdate, Date edate, Integer byDay) {
+        return ru.smartsarov.citylighting.sprut.tables.GetPkeSums.GET_PKE_SUMS.call(cid, phase, sdate, edate, byDay);
+    }
+
+    /**
+     * Get <code>GET_PKE_SUMS</code> as a table.
+     */
+    public static GetPkeSums GET_PKE_SUMS(Field<Integer> cid, Field<Integer> phase, Field<Date> sdate, Field<Date> edate, Field<Integer> byDay) {
+        return ru.smartsarov.citylighting.sprut.tables.GetPkeSums.GET_PKE_SUMS.call(cid, phase, sdate, edate, byDay);
+    }
+
+    /**
+     * The table <code>GET_PKE_TIMES</code>.
+     */
+    public static final GetPkeTimes GET_PKE_TIMES = ru.smartsarov.citylighting.sprut.tables.GetPkeTimes.GET_PKE_TIMES;
+
+    /**
+     * Call <code>GET_PKE_TIMES</code>.
+     */
+    public static Result<GetPkeTimesRecord> GET_PKE_TIMES(Configuration configuration, Integer cid, Date sdate, Date edate) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetPkeTimes.GET_PKE_TIMES.call(cid, sdate, edate)).fetch();
+    }
+
+    /**
+     * Get <code>GET_PKE_TIMES</code> as a table.
+     */
+    public static GetPkeTimes GET_PKE_TIMES(Integer cid, Date sdate, Date edate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetPkeTimes.GET_PKE_TIMES.call(cid, sdate, edate);
+    }
+
+    /**
+     * Get <code>GET_PKE_TIMES</code> as a table.
+     */
+    public static GetPkeTimes GET_PKE_TIMES(Field<Integer> cid, Field<Date> sdate, Field<Date> edate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetPkeTimes.GET_PKE_TIMES.call(cid, sdate, edate);
+    }
+
+    /**
+     * The table <code>GET_PROCEDURE_FIELD</code>.
+     */
+    public static final GetProcedureField GET_PROCEDURE_FIELD = ru.smartsarov.citylighting.sprut.tables.GetProcedureField.GET_PROCEDURE_FIELD;
+
+    /**
+     * Call <code>GET_PROCEDURE_FIELD</code>.
+     */
+    public static Result<GetProcedureFieldRecord> GET_PROCEDURE_FIELD(Configuration configuration, String name) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetProcedureField.GET_PROCEDURE_FIELD.call(name)).fetch();
+    }
+
+    /**
+     * Get <code>GET_PROCEDURE_FIELD</code> as a table.
+     */
+    public static GetProcedureField GET_PROCEDURE_FIELD(String name) {
+        return ru.smartsarov.citylighting.sprut.tables.GetProcedureField.GET_PROCEDURE_FIELD.call(name);
+    }
+
+    /**
+     * Get <code>GET_PROCEDURE_FIELD</code> as a table.
+     */
+    public static GetProcedureField GET_PROCEDURE_FIELD(Field<String> name) {
+        return ru.smartsarov.citylighting.sprut.tables.GetProcedureField.GET_PROCEDURE_FIELD.call(name);
+    }
+
+    /**
+     * The table <code>GET_TABLE_FIELD</code>.
+     */
+    public static final GetTableField GET_TABLE_FIELD = ru.smartsarov.citylighting.sprut.tables.GetTableField.GET_TABLE_FIELD;
+
+    /**
+     * Call <code>GET_TABLE_FIELD</code>.
+     */
+    public static Result<GetTableFieldRecord> GET_TABLE_FIELD(Configuration configuration, String name) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetTableField.GET_TABLE_FIELD.call(name)).fetch();
+    }
+
+    /**
+     * Get <code>GET_TABLE_FIELD</code> as a table.
+     */
+    public static GetTableField GET_TABLE_FIELD(String name) {
+        return ru.smartsarov.citylighting.sprut.tables.GetTableField.GET_TABLE_FIELD.call(name);
+    }
+
+    /**
+     * Get <code>GET_TABLE_FIELD</code> as a table.
+     */
+    public static GetTableField GET_TABLE_FIELD(Field<String> name) {
+        return ru.smartsarov.citylighting.sprut.tables.GetTableField.GET_TABLE_FIELD.call(name);
+    }
+
+    /**
+     * The table <code>GET_USKA</code>.
+     */
+    public static final GetUska GET_USKA = ru.smartsarov.citylighting.sprut.tables.GetUska.GET_USKA;
+
+    /**
+     * Call <code>GET_USKA</code>.
+     */
+    public static Result<GetUskaRecord> GET_USKA(Configuration configuration, String login, String pass, Integer uid, Timestamp fromDate, Timestamp toDate) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetUska.GET_USKA.call(login, pass, uid, fromDate, toDate)).fetch();
+    }
+
+    /**
+     * Get <code>GET_USKA</code> as a table.
+     */
+    public static GetUska GET_USKA(String login, String pass, Integer uid, Timestamp fromDate, Timestamp toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetUska.GET_USKA.call(login, pass, uid, fromDate, toDate);
+    }
+
+    /**
+     * Get <code>GET_USKA</code> as a table.
+     */
+    public static GetUska GET_USKA(Field<String> login, Field<String> pass, Field<Integer> uid, Field<Timestamp> fromDate, Field<Timestamp> toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetUska.GET_USKA.call(login, pass, uid, fromDate, toDate);
+    }
+
+    /**
+     * The table <code>GET_USKC</code>.
+     */
+    public static final GetUskc GET_USKC = ru.smartsarov.citylighting.sprut.tables.GetUskc.GET_USKC;
+
+    /**
+     * Call <code>GET_USKC</code>.
+     */
+    public static Result<GetUskcRecord> GET_USKC(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetUskc.GET_USKC.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_USKC</code> as a table.
+     */
+    public static GetUskc GET_USKC(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetUskc.GET_USKC.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_USKC</code> as a table.
+     */
+    public static GetUskc GET_USKC(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetUskc.GET_USKC.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_USKC_EXT</code>.
+     */
+    public static final GetUskcExt GET_USKC_EXT = ru.smartsarov.citylighting.sprut.tables.GetUskcExt.GET_USKC_EXT;
+
+    /**
+     * Call <code>GET_USKC_EXT</code>.
+     */
+    public static Result<GetUskcExtRecord> GET_USKC_EXT(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetUskcExt.GET_USKC_EXT.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_USKC_EXT</code> as a table.
+     */
+    public static GetUskcExt GET_USKC_EXT(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetUskcExt.GET_USKC_EXT.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_USKC_EXT</code> as a table.
+     */
+    public static GetUskcExt GET_USKC_EXT(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetUskcExt.GET_USKC_EXT.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_USKLC</code>.
+     */
+    public static final GetUsklc GET_USKLC = ru.smartsarov.citylighting.sprut.tables.GetUsklc.GET_USKLC;
+
+    /**
+     * Call <code>GET_USKLC</code>.
+     */
+    public static Result<GetUsklcRecord> GET_USKLC(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetUsklc.GET_USKLC.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_USKLC</code> as a table.
+     */
+    public static GetUsklc GET_USKLC(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetUsklc.GET_USKLC.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_USKLC</code> as a table.
+     */
+    public static GetUsklc GET_USKLC(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetUsklc.GET_USKLC.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_USKL_LOG</code>.
+     */
+    public static final GetUsklLog GET_USKL_LOG = ru.smartsarov.citylighting.sprut.tables.GetUsklLog.GET_USKL_LOG;
+
+    /**
+     * Call <code>GET_USKL_LOG</code>.
+     */
+    public static Result<GetUsklLogRecord> GET_USKL_LOG(Configuration configuration, String login, String pass, Integer uid, Timestamp fromDate, Timestamp toDate) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetUsklLog.GET_USKL_LOG.call(login, pass, uid, fromDate, toDate)).fetch();
+    }
+
+    /**
+     * Get <code>GET_USKL_LOG</code> as a table.
+     */
+    public static GetUsklLog GET_USKL_LOG(String login, String pass, Integer uid, Timestamp fromDate, Timestamp toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetUsklLog.GET_USKL_LOG.call(login, pass, uid, fromDate, toDate);
+    }
+
+    /**
+     * Get <code>GET_USKL_LOG</code> as a table.
+     */
+    public static GetUsklLog GET_USKL_LOG(Field<String> login, Field<String> pass, Field<Integer> uid, Field<Timestamp> fromDate, Field<Timestamp> toDate) {
+        return ru.smartsarov.citylighting.sprut.tables.GetUsklLog.GET_USKL_LOG.call(login, pass, uid, fromDate, toDate);
+    }
+
+    /**
+     * The table <code>GET_USPDUNO</code>.
+     */
+    public static final GetUspduno GET_USPDUNO = ru.smartsarov.citylighting.sprut.tables.GetUspduno.GET_USPDUNO;
+
+    /**
+     * Call <code>GET_USPDUNO</code>.
+     */
+    public static Result<GetUspdunoRecord> GET_USPDUNO(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetUspduno.GET_USPDUNO.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_USPDUNO</code> as a table.
+     */
+    public static GetUspduno GET_USPDUNO(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetUspduno.GET_USPDUNO.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_USPDUNO</code> as a table.
+     */
+    public static GetUspduno GET_USPDUNO(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetUspduno.GET_USPDUNO.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_USPDUNO_CONTROL_NOAD_NET</code>.
+     */
+    public static final GetUspdunoControlNoadNet GET_USPDUNO_CONTROL_NOAD_NET = ru.smartsarov.citylighting.sprut.tables.GetUspdunoControlNoadNet.GET_USPDUNO_CONTROL_NOAD_NET;
+
+    /**
+     * Call <code>GET_USPDUNO_CONTROL_NOAD_NET</code>.
+     */
+    public static Result<GetUspdunoControlNoadNetRecord> GET_USPDUNO_CONTROL_NOAD_NET(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetUspdunoControlNoadNet.GET_USPDUNO_CONTROL_NOAD_NET.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_USPDUNO_CONTROL_NOAD_NET</code> as a table.
+     */
+    public static GetUspdunoControlNoadNet GET_USPDUNO_CONTROL_NOAD_NET(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetUspdunoControlNoadNet.GET_USPDUNO_CONTROL_NOAD_NET.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_USPDUNO_CONTROL_NOAD_NET</code> as a table.
+     */
+    public static GetUspdunoControlNoadNet GET_USPDUNO_CONTROL_NOAD_NET(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetUspdunoControlNoadNet.GET_USPDUNO_CONTROL_NOAD_NET.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_USPDUNO_CONTROL_NOAD_STATE</code>.
+     */
+    public static final GetUspdunoControlNoadState GET_USPDUNO_CONTROL_NOAD_STATE = ru.smartsarov.citylighting.sprut.tables.GetUspdunoControlNoadState.GET_USPDUNO_CONTROL_NOAD_STATE;
+
+    /**
+     * Call <code>GET_USPDUNO_CONTROL_NOAD_STATE</code>.
+     */
+    public static Result<GetUspdunoControlNoadStateRecord> GET_USPDUNO_CONTROL_NOAD_STATE(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetUspdunoControlNoadState.GET_USPDUNO_CONTROL_NOAD_STATE.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_USPDUNO_CONTROL_NOAD_STATE</code> as a table.
+     */
+    public static GetUspdunoControlNoadState GET_USPDUNO_CONTROL_NOAD_STATE(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetUspdunoControlNoadState.GET_USPDUNO_CONTROL_NOAD_STATE.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_USPDUNO_CONTROL_NOAD_STATE</code> as a table.
+     */
+    public static GetUspdunoControlNoadState GET_USPDUNO_CONTROL_NOAD_STATE(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetUspdunoControlNoadState.GET_USPDUNO_CONTROL_NOAD_STATE.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_USPDUNO_EXT</code>.
+     */
+    public static final GetUspdunoExt GET_USPDUNO_EXT = ru.smartsarov.citylighting.sprut.tables.GetUspdunoExt.GET_USPDUNO_EXT;
+
+    /**
+     * Call <code>GET_USPDUNO_EXT</code>.
+     */
+    public static Result<GetUspdunoExtRecord> GET_USPDUNO_EXT(Configuration configuration, String login, String pass) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetUspdunoExt.GET_USPDUNO_EXT.call(login, pass)).fetch();
+    }
+
+    /**
+     * Get <code>GET_USPDUNO_EXT</code> as a table.
+     */
+    public static GetUspdunoExt GET_USPDUNO_EXT(String login, String pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetUspdunoExt.GET_USPDUNO_EXT.call(login, pass);
+    }
+
+    /**
+     * Get <code>GET_USPDUNO_EXT</code> as a table.
+     */
+    public static GetUspdunoExt GET_USPDUNO_EXT(Field<String> login, Field<String> pass) {
+        return ru.smartsarov.citylighting.sprut.tables.GetUspdunoExt.GET_USPDUNO_EXT.call(login, pass);
+    }
+
+    /**
+     * The table <code>GET_XGRP_TYPE</code>.
+     */
+    public static final GetXgrpType GET_XGRP_TYPE = ru.smartsarov.citylighting.sprut.tables.GetXgrpType.GET_XGRP_TYPE;
+
+    /**
+     * Call <code>GET_XGRP_TYPE</code>.
+     */
+    public static Result<GetXgrpTypeRecord> GET_XGRP_TYPE(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetXgrpType.GET_XGRP_TYPE.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_XGRP_TYPE</code> as a table.
+     */
+    public static GetXgrpType GET_XGRP_TYPE() {
+        return ru.smartsarov.citylighting.sprut.tables.GetXgrpType.GET_XGRP_TYPE.call();
+    }
+
+    /**
+     * The table <code>GET_XINTERFASE</code>.
+     */
+    public static final GetXinterfase GET_XINTERFASE = ru.smartsarov.citylighting.sprut.tables.GetXinterfase.GET_XINTERFASE;
+
+    /**
+     * Call <code>GET_XINTERFASE</code>.
+     */
+    public static Result<GetXinterfaseRecord> GET_XINTERFASE(Configuration configuration) {
+        return configuration.dsl().selectFrom(ru.smartsarov.citylighting.sprut.tables.GetXinterfase.GET_XINTERFASE.call()).fetch();
+    }
+
+    /**
+     * Get <code>GET_XINTERFASE</code> as a table.
+     */
+    public static GetXinterfase GET_XINTERFASE() {
+        return ru.smartsarov.citylighting.sprut.tables.GetXinterfase.GET_XINTERFASE.call();
+    }
 
     /**
      * The table <code>GPRS_CURR</code>.

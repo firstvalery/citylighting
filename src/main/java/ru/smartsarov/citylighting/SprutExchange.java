@@ -17,6 +17,9 @@ import static ru.smartsarov.citylighting.sprut.tables.LightLine.*;
 import static ru.smartsarov.citylighting.sprut.tables.Cntv.*;
 import static ru.smartsarov.citylighting.sprut.tables.CntLstate.*;
 import static ru.smartsarov.citylighting.sprut.tables.LightBlock.*;
+import static ru.smartsarov.citylighting.sprut.tables.GetGuardPinLastEventAll.*;
+import static ru.smartsarov.citylighting.sprut.tables.GuardPinEventDesrc.*;
+
 
 import java.math.BigDecimal;
 import java.sql.*;
@@ -202,7 +205,7 @@ public class SprutExchange {
 	public static String showState() throws ClassNotFoundException, SQLException  {
 		try (Connection conn = getConnection()) {     
 			List<UspdState> retList 
-			= DSL.using(conn, SQLDialect.FIREBIRD_2_5)
+					= DSL.using(conn, SQLDialect.FIREBIRD_2_5)
 					.select(GUARD_PIN.GPIN_UNK_ID,  
 	        				 GUARD_PIN.GPIN_ENTRY, 
 	        				 GUARD_PIN_CURR.GPCR_DVALUE, 
@@ -215,7 +218,11 @@ public class SprutExchange {
 		        		  	 GUARD_PIN_NETSOST.GRDPN_NAME,
 		        		  	LIGHT_BLOCK.BLOCK_STANDALONE,
 		        		  	LIGHT_BLOCK.BLOCK_ALL,
-		        		  	LIGHT_BLOCK.SYNCED)
+		        		  	LIGHT_BLOCK.SYNCED,
+		        		  	GUARD_PIN_EVENT_DESRC.NAME, 
+							GUARD_PIN_EVENT_DESRC.STATE, 
+							GET_GUARD_PIN_LAST_EVENT_ALL.GPLG_LDATE,
+							GET_GUARD_PIN_LAST_EVENT_ALL.GPLG_SDATE)
 								 .from(GUARD_PIN_CURR)	
 								 .join(GUARD_PIN).on(GUARD_PIN.GPIN_ID.eq(GUARD_PIN_CURR.GPCR_PIN_ID))
 								 .join(USK).on(USK.USK_ID.eq(GUARD_PIN.GPIN_UNK_ID))
@@ -226,6 +233,9 @@ public class SprutExchange {
 				        		 .join(GPRS_CURR).on(GPRS_CURR.GPRS_USK_ID.eq(GUARD_PIN.GPIN_UNK_ID))
 				        		 .join(GUARD_PIN_NETSOST).on(GUARD_PIN_NETSOST.GRDPN_ID.eq(GUARD_PIN_CURR.GPCR_STATE))
 				        		 .leftJoin(LIGHT_BLOCK).on(LIGHT_BLOCK.USK_ID.eq(USK.USK_ID))
+				        		 .leftJoin(GET_GUARD_PIN_LAST_EVENT_ALL.call("admin", "admin")).on(GET_GUARD_PIN_LAST_EVENT_ALL.USK_ID.eq(USK.USK_ID))
+								 .leftJoin(GUARD_PIN_EVENT_DESRC).on(GET_GUARD_PIN_LAST_EVENT_ALL.GPLG_EVENT.eq(GUARD_PIN_EVENT_DESRC.EVENT_NUM)
+										 .and(GET_GUARD_PIN_LAST_EVENT_ALL.GPLG_ACTION.eq(GUARD_PIN_EVENT_DESRC.ACTION_NUM)))		
 								 .fetch()
 								 .stream()
 								.collect(Collectors.groupingBy(j-> j.value1()))
@@ -256,6 +266,13 @@ public class SprutExchange {
 										us.setRelay1(pinMap.get(8)==0);
 										//Relay 2 state = PIN12 (See electrical schema )
 										us.setRelay2(pinMap.get(12)==0);
+										
+										
+										
+										us.setLastCmd(j.getValue().get(0).get(GUARD_PIN_EVENT_DESRC.NAME));
+										us.setLastCmdState(j.getValue().get(0).get(GUARD_PIN_EVENT_DESRC.STATE));
+										us.setTslastCmdServer(j.getValue().get(0).get(GET_GUARD_PIN_LAST_EVENT_ALL.GPLG_SDATE)!=null?j.getValue().get(0).get(GET_GUARD_PIN_LAST_EVENT_ALL.GPLG_SDATE).getTime()/1000:0L);
+										us.setTslastCmdUsk(j.getValue().get(0).get(GET_GUARD_PIN_LAST_EVENT_ALL.GPLG_LDATE)!=null?j.getValue().get(0).get(GET_GUARD_PIN_LAST_EVENT_ALL.GPLG_LDATE).getTime()/1000:0L);
 										
 										
 										
@@ -433,6 +450,11 @@ public class SprutExchange {
 		 }	 
 	}
 	
+	
+	
+	public static String getLastEvent()  {	
+				return "";
+	}
 
 	
 }

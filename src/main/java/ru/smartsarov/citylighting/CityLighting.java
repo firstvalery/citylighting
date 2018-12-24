@@ -121,6 +121,18 @@ public class CityLighting
 		}
     }
 	
+	@GET
+	@Path("/sprut/test")
+    public Response sprutTest()
+    {	
+		try {
+			return Response.status(Response.Status.OK).entity(SprutExchange.getLastEvent()).build(); 
+		} catch (Exception e) {
+			return Response.status(Response.Status.OK).entity(e.toString()).build(); 
+		}
+    }
+	
+	
 	
 	
 	
