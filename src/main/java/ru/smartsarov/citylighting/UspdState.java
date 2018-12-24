@@ -14,8 +14,8 @@ public class UspdState {
 	private String phisAddr;
 	private Long tsLastTelemetry;
 	private String linkType;
-	private boolean blockStandalone;
-	private boolean blockAll;
+	private int blockStandalone;
+	private int blockAll;
 	private List<List<ClusterPoint>> geoData = null;
 
 	
@@ -114,23 +114,23 @@ public class UspdState {
 	public void setLinkType(String linkType) {
 		this.linkType = linkType;
 	}
-	public boolean isBlockStandalone() {
-		return blockStandalone;
-	}
-	public void setBlockStandalone(boolean blockStandalone) {
-		this.blockStandalone = blockStandalone;
-	}
-	public boolean isBlockAll() {
-		return blockAll;
-	}
-	public void setBlockAll(boolean blockAll) {
-		this.blockAll = blockAll;
-	}
 	public List<List<ClusterPoint>> getGeoData() {
 		return geoData;
 	}
 	public void setGeoData(List<List<ClusterPoint>> geoData) {
 		this.geoData = geoData;
+	}
+	public int getBlockStandalone() {
+		return blockStandalone;
+	}
+	public void setBlockStandalone(int blockStandalone) {
+		this.blockStandalone = blockStandalone;
+	}
+	public int getBlockAll() {
+		return blockAll;
+	}
+	public void setBlockAll(int blockAll) {
+		this.blockAll = blockAll;
 	}
 
 	

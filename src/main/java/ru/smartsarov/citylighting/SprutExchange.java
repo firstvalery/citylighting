@@ -31,6 +31,7 @@ import org.jooq.DSLContext;
 import org.jooq.JSONFormat;
 import org.jooq.JSONFormat.RecordFormat;
 import org.jooq.Record1;
+import org.jooq.Record17;
 import org.jooq.Record5;
 import org.jooq.Result;
 import org.jooq.SQLDialect;
@@ -134,7 +135,7 @@ public class SprutExchange {
 	        		  (USK.USK_ID.as("device_id"), 
 	        		  USK.USK_UID.as("device_uid"), 
 	        		  USK.USK_IP.as("device_ip"), 
-	        		  HOME.HOME_NUMBER.as("building_num"), 
+	        		  HOME.HOME_NUMBER.as("house"), 
 	        		  STREET.STRT_NAME.as("street_name"), 
 	        		  STREET_TYPE.STREETT_SNAME.as("street_type"), 
 	        		  GPRS_CURR.GPRS_CTIME.as("gprs_last_timestamp"), 
@@ -163,8 +164,10 @@ public class SprutExchange {
 	 */
 	public static String showElectricParams(int device_id) throws ClassNotFoundException, SQLException{
 	try (Connection conn = getConnection()) {
-        return DSL.using(conn, SQLDialect.FIREBIRD_2_5)
-            .select(CNT.CNT_UNK_ID.as("device_id"),
+          Record17<Integer, Integer, String, Double, Double, Double, Double, Double, Double, 
+          Double, Double, Double, Double, Double,
+          Double, Double, Timestamp> result = DSL.using(conn, SQLDialect.FIREBIRD_2_5)
+            		.select(CNT.CNT_UNK_ID.as("device_id"),
             		CNT.CNT_ID.as("cntr_id"),
             		CNT.CNT_NAME.as("cntr_nm"), 
             		CNT_MRCCURRVALUE.CNTMCV_AP.as("act_nrgy"), 
@@ -184,8 +187,9 @@ public class SprutExchange {
             			.from(CNT)
             			.leftJoin(CNT_MRCCURRVALUE).on(CNT_MRCCURRVALUE.CNTMCV_CID.eq(CNT.CNT_ID))
             			.where(CNT.CNT_UNK_ID.eq(device_id))
-       		  			.fetch()
-       		  			.formatJSON(new JSONFormat().header(false).recordFormat(RecordFormat.OBJECT));
+       		  			.fetchAny();
+          
+       		  		return result!=null?result.formatJSON(new JSONFormat().header(false).recordFormat(RecordFormat.OBJECT)):"{}";
 	}
 }
 
@@ -252,11 +256,28 @@ public class SprutExchange {
 										us.setRelay1(pinMap.get(8)==0);
 										//Relay 2 state = PIN12 (See electrical schema )
 										us.setRelay2(pinMap.get(12)==0);
-										boolean block = j.getValue().get(0).get(LIGHT_BLOCK.BLOCK_STANDALONE)!=null?j.getValue().get(0).get(LIGHT_BLOCK.BLOCK_STANDALONE)!=0:false;
+										
+										
+										
+										
 										boolean synced = j.getValue().get(0).get(LIGHT_BLOCK.SYNCED)!=null?j.getValue().get(0).get(LIGHT_BLOCK.SYNCED)!=0:false;
-										us.setBlockStandalone(block && synced);
-										block = j.getValue().get(0).get(LIGHT_BLOCK.BLOCK_ALL)!=null?j.getValue().get(0).get(LIGHT_BLOCK.BLOCK_ALL)!=0:false;
-										us.setBlockAll(block && synced);
+										Integer block = 0;
+										if (synced) {
+											if((block = j.getValue().get(0).get(LIGHT_BLOCK.BLOCK_STANDALONE))!=null)												
+												block++;
+											else
+												block = 0;											
+										}										
+										us.setBlockStandalone(block);
+										
+										block = 0;
+										if (synced) {
+											if((block = j.getValue().get(0).get(LIGHT_BLOCK.BLOCK_ALL))!=null)												
+												block++;
+											else
+												block = 0;
+										}	
+										us.setBlockAll(block);
 									return us;
 								}).collect(Collectors.toList());		
 			
@@ -369,7 +390,7 @@ public class SprutExchange {
 				 						
 				 						return ls;
 				 					})
-				 					.filter(l->l.getBadLampA()!=0 || l.getBadLampB()!=0 || l.getBadLampC()!=0)
+				 		    		.filter(l->l.getBadLampA()!=0 || l.getBadLampB()!=0 || l.getBadLampC()!=0)
 				 					.collect(Collectors.toList()));
 	        } 		 
 	}
