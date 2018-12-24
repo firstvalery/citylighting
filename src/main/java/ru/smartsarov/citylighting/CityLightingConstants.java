@@ -12,6 +12,11 @@ public class CityLightingConstants {
 	static final int CMD_NIGHT = 1;
 	
 	/**
+	 * Turn on night mode constant
+	 */
+	static final int CMD_MORNING = 2;
+	
+	/**
 	 * Turn off all constant
 	 */
 	static final int CMD_OFF = 3;

@@ -233,7 +233,9 @@ public class SprutExchange {
 				        		 .join(GPRS_CURR).on(GPRS_CURR.GPRS_USK_ID.eq(GUARD_PIN.GPIN_UNK_ID))
 				        		 .join(GUARD_PIN_NETSOST).on(GUARD_PIN_NETSOST.GRDPN_ID.eq(GUARD_PIN_CURR.GPCR_STATE))
 				        		 .leftJoin(LIGHT_BLOCK).on(LIGHT_BLOCK.USK_ID.eq(USK.USK_ID))
-				        		 .leftJoin(GET_GUARD_PIN_LAST_EVENT_ALL.call("admin", "admin")).on(GET_GUARD_PIN_LAST_EVENT_ALL.USK_ID.eq(USK.USK_ID))
+				        		 .leftJoin(GET_GUARD_PIN_LAST_EVENT_ALL.call(Props.get().getProperty("logical_user","admin"), 
+				        				 		Props.get().getProperty("logical_password","admin")))
+				        		 					.on(GET_GUARD_PIN_LAST_EVENT_ALL.USK_ID.eq(USK.USK_ID))
 								 .leftJoin(GUARD_PIN_EVENT_DESRC).on(GET_GUARD_PIN_LAST_EVENT_ALL.GPLG_EVENT.eq(GUARD_PIN_EVENT_DESRC.EVENT_NUM)
 										 .and(GET_GUARD_PIN_LAST_EVENT_ALL.GPLG_ACTION.eq(GUARD_PIN_EVENT_DESRC.ACTION_NUM)))		
 								 .fetch()

@@ -51,6 +51,19 @@ public class CityLighting
     }
 	
 	@GET
+	@Path("/sprut/on_morning")
+    public Response sprutOnMorning(
+    		@QueryParam("device_id") int device_id)
+    {	
+		try {
+			return Response.status(Response.Status.OK).entity(SprutExchange.updateOrInsertObjControl(device_id, 1, CMD_MORNING, 1, "smartsarov")).build(); 
+		} catch (Exception e) {
+			return Response.status(Response.Status.OK).entity(e.toString()).build(); 
+		}
+    }
+	
+	
+	@GET
 	@Path("/sprut/off")
     public Response sprutOff(
     		@QueryParam("device_id") int device_id)
