@@ -265,11 +265,13 @@ public class SprutExchange {
 										.collect(Collectors.toMap(k->k.value2(), k->k.value3(),(oldVal, newVal)->oldVal));
 									
 										//Relay 1 state = PIN8
-										us.setRelay1(pinMap.get(8)==0);
+										us.setRelay1(pinMap.get(8)!=null?pinMap.get(8)==0:false);
 										//Relay 2 state = PIN12 (See electrical schema )
-										us.setRelay2(pinMap.get(12)==0);
+										us.setRelay2(pinMap.get(12)!=null?pinMap.get(12)==0:false);
 										
-										
+										us.setPh_a(pinMap.get(1)!=null?pinMap.get(1)==0:false);
+										us.setPh_b(pinMap.get(2)!=null?pinMap.get(2)==0:false);
+										us.setPh_c(pinMap.get(3)!=null?pinMap.get(3)==0:false);
 										
 										us.setLastCmd(j.getValue().get(0).get(GUARD_PIN_EVENT_DESRC.NAME));
 										us.setLastCmdState(j.getValue().get(0).get(GUARD_PIN_EVENT_DESRC.STATE));
