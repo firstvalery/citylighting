@@ -303,7 +303,7 @@ public class SprutExchange {
 								}).collect(Collectors.toList());		
 			
 			
-			Map<Integer, List<List<ClusterPoint>>> geoMap = DSL.using(conn, SQLDialect.FIREBIRD_2_5)
+			Map<Integer, List<List<BigDecimal[]>>> geoMap = DSL.using(conn, SQLDialect.FIREBIRD_2_5)
 			.select(USK_COOR.USK_ID,
 					USK_COOR.FIGURE_ID,
 					USK_COOR.INDEX_ID,
@@ -338,8 +338,8 @@ public class SprutExchange {
 																		}		
 																	})
 																	.collect(
-																			()->new ArrayList<ClusterPoint>(),
-																			(list, item)->list.add(new ClusterPoint(item.value4(), item.value5())),
+																			()->new ArrayList<BigDecimal[]>(),
+																			(list, item)->list.add(new BigDecimal[] {item.value5(), item.value4()}),		
 																			(list1, list2)->list1.addAll(list2));
 													}).collect(Collectors.toList());
 												}));

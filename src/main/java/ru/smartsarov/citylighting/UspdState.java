@@ -1,5 +1,6 @@
 package ru.smartsarov.citylighting;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class UspdState {
@@ -20,7 +21,7 @@ public class UspdState {
 	private String lastCmdState = "";
 	private Long tslastCmdServer;
 	private Long tslastCmdUsk;
-	private List<List<ClusterPoint>> geoData = null;
+	private List<List<BigDecimal[]>> geoData = null;
 
 	
 	public int getDeviceId() {
@@ -118,10 +119,10 @@ public class UspdState {
 	public void setLinkType(String linkType) {
 		this.linkType = linkType;
 	}
-	public List<List<ClusterPoint>> getGeoData() {
+	public List<List<BigDecimal[]>> getGeoData() {
 		return geoData;
 	}
-	public void setGeoData(List<List<ClusterPoint>> geoData) {
+	public void setGeoData(List<List<BigDecimal[]>> geoData) {
 		this.geoData = geoData;
 	}
 	public int getBlockStandalone() {
