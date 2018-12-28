@@ -21,6 +21,7 @@ public class UspdState {
 	private String lastCmdState = "";
 	private Long tslastCmdServer;
 	private Long tslastCmdUsk;
+	private String color;
 	private List<List<BigDecimal[]>> geoData = null;
 
 	
@@ -160,6 +161,12 @@ public class UspdState {
 	}
 	public void setTslastCmdUsk(Long tslastCmdUsk) {
 		this.tslastCmdUsk = tslastCmdUsk;
+	}
+	public String getColor() {
+		return color;
+	}
+	public void setColor(String color) {
+		this.color = color;
 	}
 
 	

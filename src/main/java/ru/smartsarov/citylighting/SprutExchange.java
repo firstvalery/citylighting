@@ -119,6 +119,21 @@ public class SprutExchange {
 		         		.execute();
 	         }	         
 	            conn.commit();     
+	            switch (cmd) {
+	            case 1:
+	            	return getMessage(String.format("%s%d", CityLightingConstants.CMD_NIGHT_SET, usk_id));
+	            case 2:
+	            	return getMessage(String.format("%s%d", CityLightingConstants.CMD_MORNING_SET, usk_id));
+	            case 3:
+	            	return getMessage(String.format("%s%d", CityLightingConstants.CMD_OFF_SET, usk_id));
+	            case 4:
+	            	return getMessage(String.format("%s%d", CityLightingConstants.CMD_EVENING_SET, usk_id));
+	            default:break;    
+	            }
+	            
+	            
+	            
+	            
 	            return "{\"message\":\"The command was send\"}";
 	        } 
 	}
@@ -267,7 +282,7 @@ public class SprutExchange {
 										//Relay 1 state = PIN8
 										us.setRelay1(pinMap.get(8)!=null?pinMap.get(8)==0:false);
 										//Relay 2 state = PIN12 (See electrical schema )
-										us.setRelay2(pinMap.get(12)!=null?pinMap.get(12)==0:false);
+										us.setRelay2(pinMap.get(12)!=null?pinMap.get(12)==0:false);										
 										
 										us.setPh_a(pinMap.get(1)!=null?pinMap.get(1)==0:false);
 										us.setPh_b(pinMap.get(2)!=null?pinMap.get(2)==0:false);
@@ -278,6 +293,13 @@ public class SprutExchange {
 										us.setTslastCmdServer(j.getValue().get(0).get(GET_GUARD_PIN_LAST_EVENT_ALL.GPLG_SDATE)!=null?j.getValue().get(0).get(GET_GUARD_PIN_LAST_EVENT_ALL.GPLG_SDATE).getTime()/1000:0L);
 										us.setTslastCmdUsk(j.getValue().get(0).get(GET_GUARD_PIN_LAST_EVENT_ALL.GPLG_LDATE)!=null?j.getValue().get(0).get(GET_GUARD_PIN_LAST_EVENT_ALL.GPLG_LDATE).getTime()/1000:0L);
 										
+										if(us.getLinkType().equals("Ethernet") || us.getLinkType().equals("GPRS")) {
+											if (us.isRelay1() && us.isRelay2()) 
+												us.setColor(CityLightingConstants.LIME);	
+											else if(!us.isRelay1() && !us.isRelay2())
+												us.setColor(CityLightingConstants.YELLOW);
+											else us.setColor(CityLightingConstants.GREEN);
+										}else us.setColor(CityLightingConstants.GRAY);
 										
 										
 										
@@ -339,7 +361,7 @@ public class SprutExchange {
 																	})
 																	.collect(
 																			()->new ArrayList<BigDecimal[]>(),
-																			(list, item)->list.add(new BigDecimal[] {item.value5(), item.value4()}),		
+																			(list, item)->list.add(new BigDecimal[] {item.value4(), item.value5()}),		
 																			(list1, list2)->list1.addAll(list2));
 													}).collect(Collectors.toList());
 												}));
@@ -422,7 +444,10 @@ public class SprutExchange {
 	 * @throws ClassNotFoundException 
 	 */
 	public static String blockControl(int deviceId, int blocLevel/* 0 - no block, 1 - inner scheduler block, 2 - block all*/) throws ClassNotFoundException, SQLException {
-		 try (Connection conn = getConnection()) {		 	 
+		if (blocLevel>2 || blocLevel <0) {
+			return getMessage(String.format("%s%d", CityLightingConstants.CMD_IGNORE, deviceId));		
+		}
+		try (Connection conn = getConnection()) {		 	 
 			DSLContext dsl = DSL.using(conn, SQLDialect.FIREBIRD_2_5);
 	
 			 int rs = dsl.update(LIGHT_BLOCK)
@@ -450,14 +475,29 @@ public class SprutExchange {
 	        	 dsl.executeInsert(lbr);
 	         }
 	         conn.commit();
-	         return "{\"message\":\"The command was send\"}";
+	         
+	         String tmp = "";
+	         switch (blocLevel) {
+	         case 0: tmp = CityLightingConstants.CMD_UNLOCK;
+	         	break;
+	         case 1: tmp = CityLightingConstants.CMD_STANDALONE_LOCK;
+	         	break;
+	         case 2: tmp = CityLightingConstants.CMD_ALL_LOCK;
+	         	break;
+	         default: 
+	        	 break; 
+	         }	         
+	         return getMessage(String.format("%s%d", tmp, deviceId));
 		 }	 
 	}
 	
 	
-	
-	public static String getLastEvent()  {	
-				return "";
+	/**
+	 * Return JSON {"message": "message_text"}
+	 * 
+	 */
+	public static String getMessage(String message)  {	
+				return "{\"message\":\""+ message +"\"}";
 	}
 
 	

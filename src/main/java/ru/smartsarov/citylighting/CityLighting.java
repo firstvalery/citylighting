@@ -139,7 +139,7 @@ public class CityLighting
     public Response sprutTest()
     {	
 		try {
-			return Response.status(Response.Status.OK).entity(SprutExchange.getLastEvent()).build(); 
+			return Response.status(Response.Status.OK).entity("OK").build(); 
 		} catch (Exception e) {
 			return Response.status(Response.Status.OK).entity(e.toString()).build(); 
 		}
