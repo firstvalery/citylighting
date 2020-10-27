@@ -19,7 +19,7 @@ import static ru.smartsarov.citylighting.sprut.tables.CntLstate.*;
 import static ru.smartsarov.citylighting.sprut.tables.LightBlock.*;
 import static ru.smartsarov.citylighting.sprut.tables.GetGuardPinLastEventAll.*;
 import static ru.smartsarov.citylighting.sprut.tables.GuardPinEventDesrc.*;
-
+import static ru.smartsarov.citylighting.sprut.tables.GuardZone.*;
 
 import java.math.BigDecimal;
 import java.sql.*;
@@ -237,9 +237,11 @@ public class SprutExchange {
 		        		  	GUARD_PIN_EVENT_DESRC.NAME, 
 							GUARD_PIN_EVENT_DESRC.STATE, 
 							GET_GUARD_PIN_LAST_EVENT_ALL.GPLG_LDATE,
-							GET_GUARD_PIN_LAST_EVENT_ALL.GPLG_SDATE)
+							GET_GUARD_PIN_LAST_EVENT_ALL.GPLG_SDATE,
+			        		GUARD_ZONE.GRDZ_NAME)
 								 .from(GUARD_PIN_CURR)	
 								 .join(GUARD_PIN).on(GUARD_PIN.GPIN_ID.eq(GUARD_PIN_CURR.GPCR_PIN_ID))
+								 .leftJoin(GUARD_ZONE).on(GUARD_ZONE.GRDZ_ID.eq(GUARD_PIN.GPIN_ZID))
 								 .join(USK).on(USK.USK_ID.eq(GUARD_PIN.GPIN_UNK_ID))
 								 .join(ADRESS).on(ADRESS.ADR_ID.eq(USK.USK_ADR_ID))
 				        		 .join(HOME).on(HOME.HOME_ID.eq(ADRESS.ADR_HOME_ID))
@@ -264,7 +266,7 @@ public class SprutExchange {
 										if (j.getValue().isEmpty()) {
 											return us;
 										}
-					
+										us.setName(j.getValue().get(0).get(GUARD_ZONE.GRDZ_NAME));
 										us.setDeviceId(j.getValue().get(0).get(GUARD_PIN.GPIN_UNK_ID));
 										us.setIp_addr(j.getValue().get(0).get(USK.USK_IP));
 										us.setUid(j.getValue().get(0).get(USK.USK_UID));

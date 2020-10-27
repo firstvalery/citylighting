@@ -23,6 +23,7 @@ public class UspdState {
 	private Long tslastCmdUsk;
 	private String color;
 	private List<List<BigDecimal[]>> geoData = null;
+	private String name;
 
 	
 	public int getDeviceId() {
@@ -63,7 +64,7 @@ public class UspdState {
 	}
 
 	public UspdState(int deviceId, boolean phA, boolean phB, boolean phC, boolean relay1, boolean relay2,
-			String ipAddr, int uid, String phisAddr, Long tsLastTelemetry, String linkType) {
+			String ipAddr, int uid, String phisAddr, Long tsLastTelemetry, String linkType, String name) {
 		this.deviceId = deviceId;
 		this.phA = phA;
 		this.phB = phB;
@@ -75,6 +76,7 @@ public class UspdState {
 		this.phisAddr = phisAddr;
 		this.tsLastTelemetry = tsLastTelemetry;
 		this.linkType = linkType;
+		this.name = name;
 	}
 	public UspdState() {
 		this.deviceId = 0;
@@ -88,6 +90,7 @@ public class UspdState {
 		this.phisAddr = "";
 		this.tsLastTelemetry = 0L;
 		this.linkType = "";
+		this.name="";
 	}
 
 	public String getIpAddr() {
@@ -168,7 +171,10 @@ public class UspdState {
 	public void setColor(String color) {
 		this.color = color;
 	}
-
-	
-	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 }
